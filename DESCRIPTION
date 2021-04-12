@@ -1,0 +1,26 @@
+Package: DelayedRandomArray
+Version: 0.99.0
+Date: 2021-04-11
+Description: Implements a DelayedArray of random values,
+    where the realization of the sampled values is delayed until they are needed.
+    Reproducible sampling within any subarray is achieved by chunking;
+    each chunk is initialized with a different random seed and stream.
+Authors@R: person("Aaron", "Lun", role=c("aut", "cre"), email="infinite.monkeys.with.keyboards@gmail.com")
+License: GPL-3
+Depends:
+    DelayedArray
+Imports:
+    dqrng,
+    Rcpp
+LinkingTo:
+    dqrng,
+    BH,
+    Rcpp
+Suggests:
+    testthat,
+    knitr,
+    BiocStyle,
+    rmarkdown
+SystemRequirements: C++11
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1
