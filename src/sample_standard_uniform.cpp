@@ -122,14 +122,13 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
         }
 
         // Transferring values from the buffer to the output.
-        std::fill(poscopy.begin(), poscopy.end(), 0);
-        bool inner_finished = false;
         size_t out_id = 0, buf_id = 0;
         for (int i = 0; i < ndims; ++i) {
-            auto curpos = poscopy[i];
-            out_id += preset_out[i][curpos];
-            buf_id += preset_buf[i][curpos];
+            out_id += preset_out[i][0];
+            buf_id += preset_buf[i][0];
         }
+        std::fill(poscopy.begin(), poscopy.end(), 0);
+        bool inner_finished = false;
 
         do {
             output[out_id] = buffer[buf_id];
@@ -141,7 +140,7 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
                 buf_id -= preset_buf[i][curpos];
 
                 ++curpos;
-                if (curpos >= preset_out.size()) {
+                if (static_cast<size_t>(curpos) >= preset_out[i].size()) {
                     curpos = 0;
                 }
                 out_id += preset_out[i][curpos];
@@ -158,7 +157,7 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
         finished = true;
         for (int i = 0; i < ndims; ++i) {
             auto& curpos = positions[i];
-            ++curpos;
+            curpos += preset_out[i].size();
             if (curpos >= pos.max(i)) {
                 curpos = 0;
             } else {
