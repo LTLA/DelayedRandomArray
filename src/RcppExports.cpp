@@ -6,21 +6,22 @@
 using namespace Rcpp;
 
 // sample_standard_uniform
-Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index);
-RcppExport SEXP _DelayedRandomArray_sample_standard_uniform(SEXP dimSEXP, SEXP chunkdimSEXP, SEXP seedsSEXP, SEXP indexSEXP) {
+Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index, int stream_start);
+RcppExport SEXP _DelayedRandomArray_sample_standard_uniform(SEXP dimSEXP, SEXP chunkdimSEXP, SEXP seedsSEXP, SEXP indexSEXP, SEXP stream_startSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type dim(dimSEXP);
     Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type chunkdim(chunkdimSEXP);
     Rcpp::traits::input_parameter< Rcpp::List >::type seeds(seedsSEXP);
     Rcpp::traits::input_parameter< Rcpp::List >::type index(indexSEXP);
-    rcpp_result_gen = Rcpp::wrap(sample_standard_uniform(dim, chunkdim, seeds, index));
+    Rcpp::traits::input_parameter< int >::type stream_start(stream_startSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_standard_uniform(dim, chunkdim, seeds, index, stream_start));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_DelayedRandomArray_sample_standard_uniform", (DL_FUNC) &_DelayedRandomArray_sample_standard_uniform, 4},
+    {"_DelayedRandomArray_sample_standard_uniform", (DL_FUNC) &_DelayedRandomArray_sample_standard_uniform, 5},
     {NULL, NULL, 0}
 };
 

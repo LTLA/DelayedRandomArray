@@ -43,7 +43,7 @@ private:
 };
 
 // [[Rcpp::export(rng=false)]]
-Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index) {
+Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index, int stream_start=0) {
     PositionHolder pos(dim, index);
 
     const int ndims = dim.size();
@@ -84,13 +84,15 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
         for (int i = 0; i < ndims; ++i) {
             chunkpos[i] = pos.get(i, positions[i])/chunkdim[i];
         }
-        size_t chunk_id = chunkpos[0];
-        for (int i = 1; i < ndims; ++i) {
-            chunk_id += nchunks[i-1] * chunkpos[i];
+        size_t chunk_id = 0;
+        int multiplier = 1;
+        for (int i = 0; i < ndims; ++i) {
+            chunk_id += multiplier * chunkpos[i];
+            multiplier *= nchunks[i];
         }
 
         // Sampling across the chunk.
-        pcg32 rng(dqrng::convert_seed<uint64_t>(seeds[chunk_id]), chunk_id);
+        pcg32 rng(dqrng::convert_seed<uint64_t>(seeds[chunk_id]), stream_start + chunk_id);
         boost::random::uniform_01<double> cpp_runif;
         for (auto bIt = buffer.begin(); bIt != buffer.end(); ++bIt) {
             *bIt = cpp_runif(rng);
