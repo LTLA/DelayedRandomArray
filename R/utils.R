@@ -3,6 +3,8 @@
         if (!identical(dim, dim(param))) {
             return(sprintf("'dim' and 'dim(%s)' must be the same", name))
         }
+    } else if (prod(dim) %% length(param) !=0) {
+        warning(sprintf("number of entries in the array is not a multiple of 'length(%s)'", name))
     }
     NULL
 }
