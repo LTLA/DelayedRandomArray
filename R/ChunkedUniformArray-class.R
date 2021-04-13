@@ -48,23 +48,16 @@ setValidity2("ChunkedUniformArraySeed", function(object) {
 #' @useDynLib DelayedRandomArray
 setMethod("extract_array", "ChunkedUniformArraySeed", function(x, index) {
     reindex <- .obtain_unique_sorted_index(index)
-    index2 <- reindex$index
+    arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)
 
-    arr <- sample_standard_uniform(x@dim, x@chunkdim, x@seeds, index)
-    
-    if (any(reindex$coerced)) {
-        mapping <- vector("list", length(index))
-        for (i in seq_along(mapping)) {
-            if (reindex$coerced[i]) {
-                mapping[[i]] <- match(index[[i]], index2[[i]])
-            } else {
-                mapping[[i]] <- substitute()
-            }
-        }
-        arr <- do.call("[", c(list(arr), mapping, list(drop=FALSE)))
-    }
+    arr <- .sample_distribution(arr, qunif, 
+        list(
+            min=.extract_parameter(x@min, reindex$index, dim(x)),
+            max=.extract_parameter(x@max, reindex$index, dim(x))
+        )
+    )
 
-    arr
+    .remap_to_original_index(arr, index, reindex)
 })
 
 #' @export

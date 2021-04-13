@@ -3,58 +3,23 @@
 #include "convert_seed.h"
 #include "boost/random.hpp"
 
+#include "index_server.h"
 #include <deque>
 #include <vector>
 
-struct PositionHolder {
-    PositionHolder(Rcpp::IntegerVector d, Rcpp::List index) : dim(d), get_all(d.size()), get_some(d.size()) {
-        int counter = 0;
-        for (auto it = index.begin(); it != index.end(); ++it, ++counter) {
-            Rcpp::Nullable<Rcpp::IntegerVector> current = *it;
-            if (current.isNotNull()) {
-                get_some[counter] = Rcpp::IntegerVector(current.get());
-            } else {
-                get_all[counter] = 1;
-            }
-        }
-        return;
-    }
-
-    int get(int i, int p) const {
-        if (get_all[i]) {
-            return p;
-        } else {
-            return get_some[i][p] - 1;
-        }
-    }
-
-    int max(int i) const {
-        if (get_all[i]) {
-            return dim[i];
-        } else {
-            return get_some[i].size();
-        }
-    }
-
-private:
-    Rcpp::IntegerVector dim;
-    std::vector<int> get_all;
-    std::vector<Rcpp::IntegerVector> get_some;
-};
-
 // [[Rcpp::export(rng=false)]]
 Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index, int stream_start=0) {
-    PositionHolder pos(dim, index);
+    index_server pos(dim, index);
 
     const int ndims = dim.size();
     Rcpp::IntegerVector outdims(ndims);
-    size_t multiplier = 1;
+    size_t fullsize = 1;
     for (int i = 0; i < ndims; ++i){
         outdims[i] = pos.max(i);
-        multiplier *= outdims[i];
+        fullsize *= outdims[i];
     }
-    Rcpp::NumericVector output(multiplier);
-    if (multiplier == 0) {
+    Rcpp::NumericVector output(fullsize);
+    if (fullsize == 0) {
         output.attr("dim") = outdims;
         return output;
     }
@@ -85,10 +50,12 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
             chunkpos[i] = pos.get(i, positions[i])/chunkdim[i];
         }
         size_t chunk_id = 0;
-        int multiplier = 1;
-        for (int i = 0; i < ndims; ++i) {
-            chunk_id += multiplier * chunkpos[i];
-            multiplier *= nchunks[i];
+        {
+            int multiplier = 1;
+            for (int i = 0; i < ndims; ++i) {
+                chunk_id += multiplier * chunkpos[i];
+                multiplier *= nchunks[i];
+            }
         }
 
         // Sampling across the chunk.
@@ -144,11 +111,11 @@ Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVect
                 ++curpos;
                 if (static_cast<size_t>(curpos) >= preset_out[i].size()) {
                     curpos = 0;
-                }
-                out_id += preset_out[i][curpos];
-                buf_id += preset_buf[i][curpos];
-
-                if (curpos) {
+                    out_id += preset_out[i][0];
+                    buf_id += preset_buf[i][0];
+                } else {
+                    out_id += preset_out[i][curpos];
+                    buf_id += preset_buf[i][curpos];
                     inner_finished = false;
                     break;
                 }

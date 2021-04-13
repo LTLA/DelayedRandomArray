@@ -34,3 +34,33 @@
     }
     list(index=index, coerced=coerced)
 }
+
+.remap_to_original_index <- function(arr, index, reindex) {
+    if (any(reindex$coerced)) {
+        mapping <- vector("list", length(index))
+        for (i in seq_along(mapping)) {
+            if (reindex$coerced[i]) {
+                mapping[[i]] <- match(index[[i]], reindex$index[[i]])
+            } else {
+                mapping[[i]] <- substitute()
+            }
+        }
+        arr <- do.call("[", c(list(arr), mapping, list(drop=FALSE)))
+    }
+    arr
+}
+
+.extract_parameter <- function(param, index, dims) {
+    if (!is.null(dim(param))) {
+        extract_array(param, index)
+    } else if (length(param)==1L) {
+        param
+    } else {
+        recycle_vector(param, dims, index)
+    }
+}
+
+.sample_distribution <- function(probs, FUN, params) {
+    probs[] <- do.call(FUN, c(list(p=as.numeric(probs)), lapply(params, as.numeric)))
+    probs
+}

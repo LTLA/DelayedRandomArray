@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// recycle_vector
+Rcpp::NumericVector recycle_vector(Rcpp::NumericVector vec, Rcpp::IntegerVector dim, Rcpp::List index);
+RcppExport SEXP _DelayedRandomArray_recycle_vector(SEXP vecSEXP, SEXP dimSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type dim(dimSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type index(indexSEXP);
+    rcpp_result_gen = Rcpp::wrap(recycle_vector(vec, dim, index));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sample_standard_uniform
 Rcpp::RObject sample_standard_uniform(Rcpp::IntegerVector dim, Rcpp::IntegerVector chunkdim, Rcpp::List seeds, Rcpp::List index, int stream_start);
 RcppExport SEXP _DelayedRandomArray_sample_standard_uniform(SEXP dimSEXP, SEXP chunkdimSEXP, SEXP seedsSEXP, SEXP indexSEXP, SEXP stream_startSEXP) {
@@ -21,6 +33,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_DelayedRandomArray_recycle_vector", (DL_FUNC) &_DelayedRandomArray_recycle_vector, 3},
     {"_DelayedRandomArray_sample_standard_uniform", (DL_FUNC) &_DelayedRandomArray_sample_standard_uniform, 5},
     {NULL, NULL, 0}
 };
