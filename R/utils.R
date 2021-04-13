@@ -25,6 +25,14 @@
     NULL
 }
 
+.compute_nchunks <- function(dim, chunkdim) {
+    if (any(dim <= 0)) {
+        0L
+    } else {
+        as.integer(prod(ceiling(dim/chunkdim)))
+    }
+}
+
 .obtain_unique_sorted_index <- function(index) {
     coerced <- logical(length(index))
     for (i in seq_along(index)) {

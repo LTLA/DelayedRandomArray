@@ -4,9 +4,9 @@
 \name{ChunkedUniformArray-class}
 \alias{ChunkedUniformArray-class}
 \alias{ChunkedUniformArraySeed-class}
-\alias{extract_array,ChunkedUniformArraySeed-method}
+\alias{sampleDistrParam,ChunkedUniformArraySeed-method}
+\alias{sampleDistrFun,ChunkedUniformArraySeed-method}
 \alias{matrixClass,ChunkedUniformArraySeed-method}
-\alias{chunkdim,ChunkedUniformArraySeed-method}
 \alias{ChunkedUniformArraySeed}
 \alias{DelayedArray,ChunkedUniformArraySeed-method}
 \alias{ChunkedUniformArray}
@@ -36,43 +36,27 @@ containing random draws from a uniform distribution with the specified parameter
 A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of uniformly distributed values.
 Sampling is done within chunks for rapid access to any subarray.
 }
-\section{Chunking}{
-
-}
-
-\section{Distributional parameters}{
-
-Distributional parameters are passed to the relevant quantile function to obtain a random value from the desired distribution.
-Each parameter can be:
-\itemize{
-\item A numeric scalar, which is used throughout the array.
-\item A numeric vector, which is recycled along the length of the array.
-This traverses the array along the first dimension, then the second, then the third, and so on;
-for matrices, this is equivalent to column-major ordering.
-\item A numeric array-like object of the same dimensions as \code{dim},
-where each entry contains the parameter value for the corresponding entry of the output array.
-This can be another \linkS4class{DelayedArray} object.
-}
-}
-
 \examples{
-X <- ChunkedUniformArraySeed(c(1e6, 1e6))
+X <- ChunkedUniformArraySeed(c(1e5, 1e5))
 Y <- DelayedArray(X)
 Y
 
 # Fiddling with the distribution parameters:
-X2 <- ChunkedUniformArraySeed(c(1e6, 1e6), min=1:1e6, max=1:1e6*2)
+X2 <- ChunkedUniformArraySeed(c(1e5, 1e5), min=1:1e5, max=1:1e5*2)
 Y2 <- DelayedArray(X2)
 Y2
 
 # Using another array as input:
 library(Matrix)
-min <- rsparsematrix(1e6, 1e6, density=0.00001)
-max <- min + rsparsematrix(1e6, 1e6, density=0.00001)
-X3 <- ChunkedUniformArraySeed(c(1e6, 1e6), min=min, max=max)
+min <- rsparsematrix(1e5, 1e5, density=0.00001)
+max <- min + rsparsematrix(1e5, 1e5, density=0.00001)
+X3 <- ChunkedUniformArraySeed(c(1e5, 1e5), min=min, max=max)
 Y3 <- DelayedArray(X3)
 Y3
 
+}
+\seealso{
+The \linkS4class{ChunkedRandomArraySeed} class, for details on chunking and the distributional parameters.
 }
 \author{
 Aaron Lun
