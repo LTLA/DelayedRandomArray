@@ -22,7 +22,7 @@
 #' matrixClass,RandomExponentialArraySeed-method
 #'
 #' @seealso
-#' The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+#' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 #' 
 #' @examples
 #' X <- RandomExponentialArraySeed(c(1e5, 1e5))

@@ -1,6 +1,6 @@
 #' DelayedArray of random Poisson values
 #'
-#' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of Poisson distributed values.
+#' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of Poisson-distributed values.
 #'
 #' @inheritParams RandomUniformArray
 #' @param seed A RandomPoissonArraySeed object.
@@ -9,7 +9,7 @@
 #' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
 #' 
 #' @return 
-#' All constructors return an instance of a ChunkPoissonArray object,
+#' All constructors return an instance of a RandomPoissonArray object,
 #' containing random draws from a Poisson distribution with the specified parameters.
 #'
 #' @author Aaron Lun
@@ -20,11 +20,9 @@
 #' sampleDistrParam,RandomPoissonArraySeed-method
 #' sampleDistrFun,RandomPoissonArraySeed-method
 #' matrixClass,RandomPoissonArraySeed-method
-#' is_sparse,RandomPoissonArraySeed-method
-#' extract_sparse_array,RandomPoissonArraySeed-method
 #'
 #' @seealso
-#' The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+#' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 #' 
 #' @examples
 #' X <- RandomPoissonArraySeed(c(1e5, 1e5), lambda=2)
@@ -39,7 +37,7 @@
 #' # Using another array as input:
 #' library(Matrix)
 #' lambda <- rsparsematrix(1e5, 1e5, density=0.00001)
-#' lambda <- DelayedArray(lambda) + 0.1
+#' lambda <- abs(DelayedArray(lambda)) + 0.1
 #' X3 <- RandomPoissonArraySeed(c(1e5, 1e5), lambda=lambda)
 #' Y3 <- DelayedArray(X3)
 #' Y3

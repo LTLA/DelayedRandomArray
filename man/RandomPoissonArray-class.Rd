@@ -7,8 +7,6 @@
 \alias{sampleDistrParam,RandomPoissonArraySeed-method}
 \alias{sampleDistrFun,RandomPoissonArraySeed-method}
 \alias{matrixClass,RandomPoissonArraySeed-method}
-\alias{is_sparse,RandomPoissonArraySeed-method}
-\alias{extract_sparse_array,RandomPoissonArraySeed-method}
 \alias{RandomPoissonArraySeed}
 \alias{DelayedArray,RandomPoissonArraySeed-method}
 \alias{RandomPoissonArray}
@@ -33,11 +31,11 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 \item{seed}{A RandomPoissonArraySeed object.}
 }
 \value{
-All constructors return an instance of a ChunkPoissonArray object,
+All constructors return an instance of a RandomPoissonArray object,
 containing random draws from a Poisson distribution with the specified parameters.
 }
 \description{
-A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of Poisson distributed values.
+A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of Poisson-distributed values.
 }
 \examples{
 X <- RandomPoissonArraySeed(c(1e5, 1e5), lambda=2)
@@ -52,14 +50,14 @@ Y2
 # Using another array as input:
 library(Matrix)
 lambda <- rsparsematrix(1e5, 1e5, density=0.00001)
-lambda <- DelayedArray(lambda) + 0.1
+lambda <- abs(DelayedArray(lambda)) + 0.1
 X3 <- RandomPoissonArraySeed(c(1e5, 1e5), lambda=lambda)
 Y3 <- DelayedArray(X3)
 Y3
 
 }
 \seealso{
-The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 }
 \author{
 Aaron Lun

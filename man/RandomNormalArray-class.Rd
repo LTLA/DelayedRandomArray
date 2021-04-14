@@ -29,7 +29,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 \item{seed}{A RandomNormalArraySeed object.}
 }
 \value{
-All constructors return an instance of a ChunkNormalArray object,
+All constructors return an instance of a RandomNormalArray object,
 containing random draws from a normal distribution with the specified parameters.
 }
 \description{
@@ -54,7 +54,7 @@ Y3
 
 }
 \seealso{
-The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 }
 \author{
 Aaron Lun

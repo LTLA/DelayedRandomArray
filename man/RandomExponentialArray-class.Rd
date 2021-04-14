@@ -55,7 +55,7 @@ Y3
 
 }
 \seealso{
-The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 }
 \author{
 Aaron Lun

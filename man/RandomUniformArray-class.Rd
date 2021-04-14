@@ -29,7 +29,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 \item{seed}{A RandomUniformArraySeed object.}
 }
 \value{
-All constructors return an instance of a ChunkUniformArray object,
+All constructors return an instance of a RandomUniformArray object,
 containing random draws from a uniform distribution with the specified parameters.
 }
 \description{

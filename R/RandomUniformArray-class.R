@@ -9,7 +9,7 @@
 #' @param seed A RandomUniformArraySeed object.
 #' 
 #' @return 
-#' All constructors return an instance of a ChunkUniformArray object,
+#' All constructors return an instance of a RandomUniformArray object,
 #' containing random draws from a uniform distribution with the specified parameters.
 #'
 #' @author Aaron Lun

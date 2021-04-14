@@ -9,7 +9,7 @@
 #' @param seed A RandomNormalArraySeed object.
 #' 
 #' @return 
-#' All constructors return an instance of a ChunkNormalArray object,
+#' All constructors return an instance of a RandomNormalArray object,
 #' containing random draws from a normal distribution with the specified parameters.
 #'
 #' @author Aaron Lun
@@ -22,7 +22,7 @@
 #' matrixClass,RandomNormalArraySeed-method
 #'
 #' @seealso
-#' The \linkS4class{RandomRandomArraySeed} class, for details on chunking and the distributional parameters.
+#' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
 #' 
 #' @examples
 #' X <- RandomNormalArraySeed(c(1e5, 1e5))
