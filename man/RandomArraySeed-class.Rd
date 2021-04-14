@@ -8,9 +8,8 @@
 \alias{chunkdim,RandomArraySeed-method}
 \alias{show,RandomArraySeed-method}
 \alias{extract_array,RandomArraySeed-method}
-\alias{SparseRandomArraySeed}
-\alias{is_sparse,SparseRandomArraySeed-method}
-\alias{extract_sparse_array,SparseRandomArraySeed-method}
+\alias{is_sparse,RandomArraySeed-method}
+\alias{extract_sparse_array,RandomArraySeed-method}
 \title{A DelayedArray seed supplying chunked random values}
 \description{
 The RandomArraySeed is a \linkS4class{DelayedArray} seed that performs reproducible, on-demand sampling of randomly distributed values.
@@ -71,12 +70,14 @@ This can be another \linkS4class{DelayedArray} object.
 \section{Representing sparsity}{
 
 For certain distributions, we may expect a large number of zeroes in the random output.
-These cases are supported by the SparseRandomArraySeed virtual class, which provides the \emph{option} to treat the sampled values as being sparse.
-This allows use of functions like \code{\link{extract_sparse_array}} to supply a sparse array to downstream applications.
+We provide the \emph{option} to treat the sampled values as being sparse, by setting \code{sparse=TRUE} in the constructors of the relevant subclasses.
+This is optional as most distributions will not yield sparse arrays for most of their possible parameter space.
 
-To enable a sparse interpretation of the random array, we set \code{sparse=TRUE} in the constructors of the relevant subclasses.
-This is optional as most distributions will not yield sparse arrays for most of their parameter space.
-Also note that this option does not affect the sampling itself; the result is the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+When \code{sparse=TRUE}, the block processing machinery in \pkg{DelayedArray} will return a sparse array. 
+This gives downstream applications the opportunity to use more efficient sparse algorithms when relevant.
+However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+
+We can determine whether a RandomArraySeed \code{x} has a sparse interpretation with \code{is_sparse(x)}.
 }
 
 \seealso{

@@ -1,9 +1,6 @@
 #' @export
 #' @import DelayedArray
-setClass("RandomArraySeed", contains="VIRTUAL", slots=c(dim="integer", chunkdim="integer", seeds="list"))
-
-#' @export
-setClass("SparseRandomArraySeed", contains=c("VIRTUAL", "RandomArraySeed"), slots=c(sparse="logical"))
+setClass("RandomArraySeed", contains="VIRTUAL", slots=c(dim="integer", chunkdim="integer", seeds="list", sparse="logical"))
 
 
 #' @export
@@ -27,7 +24,7 @@ setClass("RandomNormalMatrix", contains="DelayedMatrix", representation(seed="Ra
 
 
 #' @export
-setClass("RandomPoissonArraySeed", contains="SparseRandomArraySeed", slots=c(lambda="ANY"))
+setClass("RandomPoissonArraySeed", contains="RandomArraySeed", slots=c(lambda="ANY"))
 
 #' @export
 setClass("RandomPoissonArray", contains="DelayedArray", representation(seed="RandomPoissonArraySeed"))
@@ -57,7 +54,7 @@ setClass("RandomBetaMatrix", contains="DelayedMatrix", representation(seed="Rand
 
 
 #' @export
-setClass("RandomBinomialArraySeed", contains="SparseRandomArraySeed", slots=c(size="ANY", prob="ANY"))
+setClass("RandomBinomialArraySeed", contains="RandomArraySeed", slots=c(size="ANY", prob="ANY"))
 
 #' @export
 setClass("RandomBinomialArray", contains="DelayedArray", representation(seed="RandomBinomialArraySeed"))

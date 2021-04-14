@@ -51,12 +51,14 @@
 #'
 #' @section Representing sparsity:
 #' For certain distributions, we may expect a large number of zeroes in the random output.
-#' These cases are supported by the SparseRandomArraySeed virtual class, which provides the \emph{option} to treat the sampled values as being sparse.
-#' This allows use of functions like \code{\link{extract_sparse_array}} to supply a sparse array to downstream applications.
+#' We provide the \emph{option} to treat the sampled values as being sparse, by setting \code{sparse=TRUE} in the constructors of the relevant subclasses.
+#' This is optional as most distributions will not yield sparse arrays for most of their possible parameter space.
 #'
-#' To enable a sparse interpretation of the random array, we set \code{sparse=TRUE} in the constructors of the relevant subclasses.
-#' This is optional as most distributions will not yield sparse arrays for most of their parameter space.
-#' Also note that this option does not affect the sampling itself; the result is the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+#' When \code{sparse=TRUE}, the block processing machinery in \pkg{DelayedArray} will return a sparse array. 
+#' This gives downstream applications the opportunity to use more efficient sparse algorithms when relevant.
+#' However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+#'
+#' We can determine whether a RandomArraySeed \code{x} has a sparse interpretation with \code{is_sparse(x)}.
 #' 
 #' @seealso
 #' The \linkS4class{RandomUniformArraySeed} class, which implements sampling from a uniform distribution.
@@ -70,9 +72,8 @@
 #' chunkdim,RandomArraySeed-method
 #' show,RandomArraySeed-method
 #' extract_array,RandomArraySeed-method
-#' SparseRandomArraySeed
-#' is_sparse,SparseRandomArraySeed-method
-#' extract_sparse_array,SparseRandomArraySeed-method
+#' is_sparse,RandomArraySeed-method
+#' extract_sparse_array,RandomArraySeed-method
 #'
 #' @docType class
 #' @name RandomArraySeed-class
@@ -80,7 +81,7 @@ NULL
 
 #' @export
 #' @importFrom dqrng generateSeedVectors
-setMethod("initialize", "RandomArraySeed", function(.Object, dim, chunkdim, ...) {
+setMethod("initialize", "RandomArraySeed", function(.Object, dim, chunkdim, sparse=FALSE, ...) {
     dim <- as.integer(dim)
 
     if (is.null(chunkdim)) {
@@ -95,7 +96,7 @@ setMethod("initialize", "RandomArraySeed", function(.Object, dim, chunkdim, ...)
     nchunks <- .compute_nchunks(dim, chunkdim)
     seeds <- generateSeedVectors(nchunks)
 
-    callNextMethod(.Object, dim=dim, chunkdim=chunkdim, seeds=seeds, ...)
+    callNextMethod(.Object, dim=dim, chunkdim=chunkdim, seeds=seeds, sparse=sparse, ...)
 })
 
 #' @export
@@ -120,6 +121,10 @@ setValidity2("RandomArraySeed", function(object) {
         return(msg)
     }
 
+    if (!isTRUE(object@sparse) && !isFALSE(object@sparse)) {
+        return("'sparse' must be either TRUE or FALSE")
+    }
+
     TRUE
 })
 
@@ -139,18 +144,11 @@ setMethod("extract_array", "RandomArraySeed", function(x, index) {
     .remap_to_original_index(arr, index, reindex)
 })
 
-setValidity2("SparseRandomArraySeed", function(object) {
-    if (!isTRUE(object@sparse) && !isFALSE(object@sparse)) {
-        return("'sparse' must be either TRUE or FALSE")
-    }
-    TRUE
-})
+#' @export
+setMethod("is_sparse", "RandomArraySeed", function(x) x@sparse)
 
 #' @export
-setMethod("is_sparse", "SparseRandomArraySeed", function(x) x@sparse)
-
-#' @export
-setMethod("extract_sparse_array", "SparseRandomArraySeed", function(x, index) {
+setMethod("extract_sparse_array", "RandomArraySeed", function(x, index) {
     out <- extract_array(x, index)
     as(out, "SparseArraySeed")
 })
