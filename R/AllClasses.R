@@ -36,3 +36,53 @@ setClass("RandomPoissonArray", contains="DelayedArray", representation(seed="Ran
 setClass("RandomPoissonMatrix", contains="DelayedMatrix", representation(seed="RandomPoissonArraySeed"))
 
 
+#' @export
+setClass("RandomExponentialArraySeed", contains="RandomArraySeed", slots=c(rate="ANY"))
+
+#' @export
+setClass("RandomExponentialArray", contains="DelayedArray", representation(seed="RandomExponentialArraySeed"))
+
+#' @export
+setClass("RandomExponentialMatrix", contains="DelayedMatrix", representation(seed="RandomExponentialArraySeed"))
+
+
+#' @export
+setClass("RandomBetaArraySeed", contains="RandomArraySeed", slots=c(shape1="ANY", shape2="ANY", ncp="ANY"))
+
+#' @export
+setClass("RandomBetaArray", contains="DelayedArray", representation(seed="RandomBetaArraySeed"))
+
+#' @export
+setClass("RandomBetaMatrix", contains="DelayedMatrix", representation(seed="RandomBetaArraySeed"))
+
+
+#' @export
+setClass("RandomBinomialArraySeed", contains="SparseRandomArraySeed", slots=c(size="ANY", prob="ANY"))
+
+#' @export
+setClass("RandomBinomialArray", contains="DelayedArray", representation(seed="RandomBinomialArraySeed"))
+
+#' @export
+setClass("RandomBinomialMatrix", contains="DelayedMatrix", representation(seed="RandomBinomialArraySeed"))
+
+
+#' @export
+setClass("RandomCauchyArraySeed", contains="RandomArraySeed", slots=c(location="ANY", scale="ANY"))
+
+#' @export
+setClass("RandomCauchyArray", contains="DelayedArray", representation(seed="RandomCauchyArraySeed"))
+
+#' @export
+setClass("RandomCauchyMatrix", contains="DelayedMatrix", representation(seed="RandomCauchyArraySeed"))
+
+
+#' @export
+setClass("RandomChisquaredArraySeed", contains="RandomArraySeed", slots=c(df="ANY", ncp="ANY"))
+
+#' @export
+setClass("RandomChisquaredArray", contains="DelayedArray", representation(seed="RandomChisquaredArraySeed"))
+
+#' @export
+setClass("RandomChisquaredMatrix", contains="DelayedMatrix", representation(seed="RandomChisquaredArraySeed"))
+
+
