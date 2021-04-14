@@ -1,6 +1,6 @@
 #' A DelayedArray seed supplying chunked random values
 #'
-#' The ChunkedDelayedRandomSeed is a \linkS4class{DelayedArray} seed that performs reproducible, on-demand sampling of randomly distributed values.
+#' The RandomArraySeed is a \linkS4class{DelayedArray} seed that performs reproducible, on-demand sampling of randomly distributed values.
 #' Note that this is a virtual class; the intention is to define concrete subclasses corresponding to specific parameterized distributions.
 #'
 #' @section Chunking dimensions:
@@ -16,14 +16,14 @@
 #' This may be unexpected, given that chunking in real datasets will never change the data, only the performance of access operations.
 #' However, it is largely unavoidable in this context as the random number stream is rearranged within the array.
 #'
-#' The \code{\link{chunkdim}(x)} method will return the chunk dimensions of a ChunkedDelayedRandomSeed instance \code{x}.
+#' The \code{\link{chunkdim}(x)} method will return the chunk dimensions of a RandomArraySeed instance \code{x}.
 #' This will be used by the \pkg{DelayedArray} machinery to optimize block processing by extracting whole chunks where possible.
 #'
 #' @section Implementing subclasses:
-#' To sample from a specific distribution, we can implement a concrete subclass of the ChunkedDelayedRandomSeed.
+#' To sample from a specific distribution, we can implement a concrete subclass of the RandomArraySeed.
 #' This is done by implementing methods for \code{sampleDistrFun} and \code{sampleDistrParam}.
 #'
-#' In the code chunks below, \code{x} is an instance of a ChunkedDelayedRandomSeed subclass:
+#' In the code chunks below, \code{x} is an instance of a RandomArraySeed subclass:
 #' \itemize{
 #' \item \code{sampleDistrFun(x)} returns a quantile function that accepts a vector of cumulative probabilities \code{p} and returns a numeric vector of quantiles.
 #' A typical example is \code{\link{qnorm}}, though similar functions from the \pkg{stats} package can also be used.
@@ -33,7 +33,7 @@
 #' Each distributional parameter is expected to be numeric. 
 #' }
 #'
-#' The \code{extract_array} method for the ChunkedDelayedRandomSeed will automatically use both of the above methods to sample from the specified distribution.
+#' The \code{extract_array} method for the RandomArraySeed will automatically use both of the above methods to sample from the specified distribution.
 #' This is achieved by randomly sampling from a standard uniform distribution, treating the values as probabilities and converting them into quantiles.
 #'
 #' @section Distributional parameters:
@@ -48,25 +48,39 @@
 #' where each entry contains the parameter value for the corresponding entry of the output array.
 #' This can be another \linkS4class{DelayedArray} object.
 #' }
+#'
+#' @section Representing sparsity:
+#' For certain distributions, we may expect a large number of zeroes in the random output.
+#' These cases are supported by the SparseRandomArraySeed virtual class, which provides the \emph{option} to treat the sampled values as being sparse.
+#' This allows use of functions like \code{\link{extract_sparse_array}} to supply a sparse array to downstream applications.
+#'
+#' To enable a sparse interpretation of the random array, we set \code{sparse=TRUE} in the constructors of the relevant subclasses.
+#' This is optional as most distributions will not yield sparse arrays for most of their parameter space.
+#' Also note that this option does not affect the sampling itself; the result is the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
 #' 
 #' @seealso
-#' The \linkS4class{ChunkedUniformArraySeed} class, which implements sampling from a uniform distribution.
+#' The \linkS4class{RandomUniformArraySeed} class, which implements sampling from a uniform distribution.
+#'
+#' The \linkS4class{RandomPoissonArraySeed} class, which implements sampling from a Poisson distribution.
 #'
 #' @author Aaron Lun
 #' @aliases
-#' ChunkedRandomArraySeed
-#' initialize,ChunkedRandomArraySeed-method
-#' chunkdim,ChunkedRandomArraySeed-method
-#' show,ChunkedRandomArraySeed-method
-#' extract_array,ChunkedRandomArraySeed-method
+#' RandomArraySeed
+#' initialize,RandomArraySeed-method
+#' chunkdim,RandomArraySeed-method
+#' show,RandomArraySeed-method
+#' extract_array,RandomArraySeed-method
+#' SparseRandomArraySeed
+#' is_sparse,SparseRandomArraySeed-method
+#' extract_sparse_array,SparseRandomArraySeed-method
 #'
 #' @docType class
-#' @name ChunkedRandomArraySeed-class
+#' @name RandomArraySeed-class
 NULL
 
 #' @export
 #' @importFrom dqrng generateSeedVectors
-setMethod("initialize", "ChunkedRandomArraySeed", function(.Object, dim, chunkdim, ...) {
+setMethod("initialize", "RandomArraySeed", function(.Object, dim, chunkdim, ...) {
     dim <- as.integer(dim)
 
     if (is.null(chunkdim)) {
@@ -85,9 +99,9 @@ setMethod("initialize", "ChunkedRandomArraySeed", function(.Object, dim, chunkdi
 })
 
 #' @export
-setMethod("chunkdim", "ChunkedRandomArraySeed", function(x) x@chunkdim)
+setMethod("chunkdim", "RandomArraySeed", function(x) x@chunkdim)
 
-setValidity2("ChunkedRandomArraySeed", function(object) {
+setValidity2("RandomArraySeed", function(object) {
     dims <- object@dim
     if (any(dims < 0)) {
         return("'dim' must contain non-negative integers")
@@ -110,17 +124,33 @@ setValidity2("ChunkedRandomArraySeed", function(object) {
 })
 
 #' @export
-setMethod("show", "ChunkedRandomArraySeed", function(object) {
+setMethod("show", "RandomArraySeed", function(object) {
     cat(paste(dim(object), collapse=" x "), class(object), "object\n")
 })
 
 #' @export
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib DelayedRandomArray
-setMethod("extract_array", "ChunkedRandomArraySeed", function(x, index) {
+setMethod("extract_array", "RandomArraySeed", function(x, index) {
     reindex <- .obtain_unique_sorted_index(index)
     arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)
     params <- lapply(sampleDistrParam(x), function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
     arr <- .sample_distribution(arr, sampleDistrFun(x), params)
     .remap_to_original_index(arr, index, reindex)
+})
+
+setValidity2("SparseRandomArraySeed", function(object) {
+    if (!isTRUE(object@sparse) && !isFALSE(object@sparse)) {
+        return("'sparse' must be either TRUE or FALSE")
+    }
+    TRUE
+})
+
+#' @export
+setMethod("is_sparse", "SparseRandomArraySeed", function(x) x@sparse)
+
+#' @export
+setMethod("extract_sparse_array", "SparseRandomArraySeed", function(x, index) {
+    out <- extract_array(x, index)
+    as(out, "SparseArraySeed")
 })
