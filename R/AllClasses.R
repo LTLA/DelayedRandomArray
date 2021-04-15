@@ -83,3 +83,32 @@ setClass("RandomChisquaredArray", contains="DelayedArray", representation(seed="
 setClass("RandomChisquaredMatrix", contains="DelayedMatrix", representation(seed="RandomChisquaredArraySeed"))
 
 
+#' @export
+setClass("RandomFArraySeed", contains="RandomArraySeed", slots=c(df1="ANY", df2="ANY", ncp="ANY"))
+
+#' @export
+setClass("RandomFArray", contains="DelayedArray", representation(seed="RandomFArraySeed"))
+
+#' @export
+setClass("RandomFMatrix", contains="DelayedMatrix", representation(seed="RandomFArraySeed"))
+
+
+#' @export
+setClass("RandomGammaArraySeed", contains="RandomArraySeed", slots=c(shape="ANY", scale="ANY"))
+
+#' @export
+setClass("RandomGammaArray", contains="DelayedArray", representation(seed="RandomGammaArraySeed"))
+
+#' @export
+setClass("RandomGammaMatrix", contains="DelayedMatrix", representation(seed="RandomGammaArraySeed"))
+
+
+#' @export
+setClass("RandomNbinomArraySeed", contains="RandomArraySeed", slots=c(prob="ANY", size="ANY", mu="ANY"))
+
+#' @export
+setClass("RandomNbinomArray", contains="DelayedArray", representation(seed="RandomNbinomArraySeed"))
+
+#' @export
+setClass("RandomNbinomMatrix", contains="DelayedMatrix", representation(seed="RandomNbinomArraySeed"))
+
