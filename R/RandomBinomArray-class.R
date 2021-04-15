@@ -4,7 +4,7 @@
 #'
 #' @inheritParams RandomUnifArray
 #' @param seed A RandomBinomArraySeed object.
-#' @param lambda Numeric vector used as \code{lambda} in \code{\link{qpois}}.
+#' @param size,prob Numeric vector used as the argument of the same name in \code{\link{qbinom}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
 #' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
 #' 

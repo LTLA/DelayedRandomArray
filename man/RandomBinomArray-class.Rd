@@ -22,14 +22,14 @@ RandomBinomArray(dim, size, prob, chunkdim = NULL, sparse = FALSE)
 \arguments{
 \item{dim}{Integer vector of positive length, specifying the dimensions of the array.}
 
+\item{size, prob}{Numeric vector used as the argument of the same name in \code{\link{qbinom}}.
+Alternatively, a numeric array-like object with the same dimensions as \code{dim}.}
+
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
 \item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
 
 \item{seed}{A RandomBinomArraySeed object.}
-
-\item{lambda}{Numeric vector used as \code{lambda} in \code{\link{qpois}}.
-Alternatively, a numeric array-like object with the same dimensions as \code{dim}.}
 }
 \value{
 All constructors return an instance of a RandomBinomArray object,
