@@ -61,9 +61,9 @@
 #' We can determine whether a RandomArraySeed \code{x} has a sparse interpretation with \code{is_sparse(x)}.
 #' 
 #' @seealso
-#' The \linkS4class{RandomUniformArraySeed} class, which implements sampling from a uniform distribution.
+#' The \linkS4class{RandomUnifArraySeed} class, which implements sampling from a uniform distribution.
 #'
-#' The \linkS4class{RandomPoissonArraySeed} class, which implements sampling from a Poisson distribution.
+#' The \linkS4class{RandomPoisArraySeed} class, which implements sampling from a Poisson distribution.
 #'
 #' @author Aaron Lun
 #' @aliases

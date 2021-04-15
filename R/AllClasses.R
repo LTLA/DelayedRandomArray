@@ -4,43 +4,43 @@ setClass("RandomArraySeed", contains="VIRTUAL", slots=c(dim="integer", chunkdim=
 
 
 #' @export
-setClass("RandomUniformArraySeed", contains="RandomArraySeed", slots=c(min="ANY", max="ANY"))
+setClass("RandomUnifArraySeed", contains="RandomArraySeed", slots=c(min="ANY", max="ANY"))
 
 #' @export
-setClass("RandomUniformArray", contains="DelayedArray", representation(seed="RandomUniformArraySeed"))
+setClass("RandomUnifArray", contains="DelayedArray", representation(seed="RandomUnifArraySeed"))
 
 #' @export
-setClass("RandomUniformMatrix", contains="DelayedMatrix", representation(seed="RandomUniformArraySeed"))
-
-
-#' @export
-setClass("RandomNormalArraySeed", contains="RandomArraySeed", slots=c(mean="ANY", sd="ANY"))
-
-#' @export
-setClass("RandomNormalArray", contains="DelayedArray", representation(seed="RandomNormalArraySeed"))
-
-#' @export
-setClass("RandomNormalMatrix", contains="DelayedMatrix", representation(seed="RandomNormalArraySeed"))
+setClass("RandomUnifMatrix", contains="DelayedMatrix", representation(seed="RandomUnifArraySeed"))
 
 
 #' @export
-setClass("RandomPoissonArraySeed", contains="RandomArraySeed", slots=c(lambda="ANY"))
+setClass("RandomNormArraySeed", contains="RandomArraySeed", slots=c(mean="ANY", sd="ANY"))
 
 #' @export
-setClass("RandomPoissonArray", contains="DelayedArray", representation(seed="RandomPoissonArraySeed"))
+setClass("RandomNormArray", contains="DelayedArray", representation(seed="RandomNormArraySeed"))
 
 #' @export
-setClass("RandomPoissonMatrix", contains="DelayedMatrix", representation(seed="RandomPoissonArraySeed"))
+setClass("RandomNormMatrix", contains="DelayedMatrix", representation(seed="RandomNormArraySeed"))
 
 
 #' @export
-setClass("RandomExponentialArraySeed", contains="RandomArraySeed", slots=c(rate="ANY"))
+setClass("RandomPoisArraySeed", contains="RandomArraySeed", slots=c(lambda="ANY"))
 
 #' @export
-setClass("RandomExponentialArray", contains="DelayedArray", representation(seed="RandomExponentialArraySeed"))
+setClass("RandomPoisArray", contains="DelayedArray", representation(seed="RandomPoisArraySeed"))
 
 #' @export
-setClass("RandomExponentialMatrix", contains="DelayedMatrix", representation(seed="RandomExponentialArraySeed"))
+setClass("RandomPoisMatrix", contains="DelayedMatrix", representation(seed="RandomPoisArraySeed"))
+
+
+#' @export
+setClass("RandomExpArraySeed", contains="RandomArraySeed", slots=c(rate="ANY"))
+
+#' @export
+setClass("RandomExpArray", contains="DelayedArray", representation(seed="RandomExpArraySeed"))
+
+#' @export
+setClass("RandomExpMatrix", contains="DelayedMatrix", representation(seed="RandomExpArraySeed"))
 
 
 #' @export
@@ -54,13 +54,13 @@ setClass("RandomBetaMatrix", contains="DelayedMatrix", representation(seed="Rand
 
 
 #' @export
-setClass("RandomBinomialArraySeed", contains="RandomArraySeed", slots=c(size="ANY", prob="ANY"))
+setClass("RandomBinomArraySeed", contains="RandomArraySeed", slots=c(size="ANY", prob="ANY"))
 
 #' @export
-setClass("RandomBinomialArray", contains="DelayedArray", representation(seed="RandomBinomialArraySeed"))
+setClass("RandomBinomArray", contains="DelayedArray", representation(seed="RandomBinomArraySeed"))
 
 #' @export
-setClass("RandomBinomialMatrix", contains="DelayedMatrix", representation(seed="RandomBinomialArraySeed"))
+setClass("RandomBinomMatrix", contains="DelayedMatrix", representation(seed="RandomBinomArraySeed"))
 
 
 #' @export
@@ -74,13 +74,13 @@ setClass("RandomCauchyMatrix", contains="DelayedMatrix", representation(seed="Ra
 
 
 #' @export
-setClass("RandomChisquaredArraySeed", contains="RandomArraySeed", slots=c(df="ANY", ncp="ANY"))
+setClass("RandomChisqArraySeed", contains="RandomArraySeed", slots=c(df="ANY", ncp="ANY"))
 
 #' @export
-setClass("RandomChisquaredArray", contains="DelayedArray", representation(seed="RandomChisquaredArraySeed"))
+setClass("RandomChisqArray", contains="DelayedArray", representation(seed="RandomChisqArraySeed"))
 
 #' @export
-setClass("RandomChisquaredMatrix", contains="DelayedMatrix", representation(seed="RandomChisquaredArraySeed"))
+setClass("RandomChisqMatrix", contains="DelayedMatrix", representation(seed="RandomChisqArraySeed"))
 
 
 #' @export

@@ -2,7 +2,7 @@
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of negative binomial-distributed values.
 #'
-#' @inheritParams RandomUniformArray
+#' @inheritParams RandomUnifArray
 #' @param seed A RandomNbinomArraySeed object.
 #' @param prob,size,mu Numeric vector used as the argument of the same name in \code{\link{qnbinom}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
