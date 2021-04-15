@@ -4,6 +4,7 @@
 \name{RandomPoisArray-class}
 \alias{RandomPoisArray-class}
 \alias{RandomPoisArraySeed-class}
+\alias{RandomPoisMatrix-class}
 \alias{sampleDistrParam,RandomPoisArraySeed-method}
 \alias{sampleDistrFun,RandomPoisArraySeed-method}
 \alias{matrixClass,RandomPoisArraySeed-method}

@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomUnifArray-class
 #' RandomUnifArraySeed-class
+#' RandomUnifMatrix-class
 #' sampleDistrParam,RandomUnifArraySeed-method
 #' sampleDistrFun,RandomUnifArraySeed-method
 #' matrixClass,RandomUnifArraySeed-method

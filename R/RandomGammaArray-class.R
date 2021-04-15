@@ -1,4 +1,4 @@
-#' DelayedArray of gamma-distributed values
+#' DelayedArray of random gamma-distributed values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of gamma-distributed values.
 #'

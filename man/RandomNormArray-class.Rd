@@ -4,13 +4,14 @@
 \name{RandomNormArray-class}
 \alias{RandomNormArray-class}
 \alias{RandomNormArraySeed-class}
+\alias{RandomNormMatrix-class}
 \alias{sampleDistrParam,RandomNormArraySeed-method}
 \alias{sampleDistrFun,RandomNormArraySeed-method}
 \alias{matrixClass,RandomNormArraySeed-method}
 \alias{RandomNormArraySeed}
 \alias{DelayedArray,RandomNormArraySeed-method}
 \alias{RandomNormArray}
-\title{DelayedArray of chunked normal values}
+\title{DelayedArray of random normal values}
 \usage{
 RandomNormArraySeed(dim, mean = 0, sd = 1, chunkdim = NULL)
 

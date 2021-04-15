@@ -4,13 +4,14 @@
 \name{RandomCauchyArray-class}
 \alias{RandomCauchyArray-class}
 \alias{RandomCauchyArraySeed-class}
+\alias{RandomCauchyMatrix-class}
 \alias{sampleDistrParam,RandomCauchyArraySeed-method}
 \alias{sampleDistrFun,RandomCauchyArraySeed-method}
 \alias{matrixClass,RandomCauchyArraySeed-method}
 \alias{RandomCauchyArraySeed}
 \alias{DelayedArray,RandomCauchyArraySeed-method}
 \alias{RandomCauchyArray}
-\title{DelayedArray of chunked Cauchy-distributed values}
+\title{DelayedArray of random Cauchy-distributed values}
 \usage{
 RandomCauchyArraySeed(dim, location = 0, scale = 1, chunkdim = NULL)
 

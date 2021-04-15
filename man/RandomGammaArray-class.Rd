@@ -11,7 +11,7 @@
 \alias{RandomGammaArraySeed}
 \alias{DelayedArray,RandomGammaArraySeed-method}
 \alias{RandomGammaArray}
-\title{DelayedArray of gamma-distributed values}
+\title{DelayedArray of random gamma-distributed values}
 \usage{
 RandomGammaArraySeed(dim, shape, rate = 1, scale = 1/rate, chunkdim = NULL)
 

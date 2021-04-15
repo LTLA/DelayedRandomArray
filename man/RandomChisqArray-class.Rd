@@ -4,13 +4,14 @@
 \name{RandomChisqArray-class}
 \alias{RandomChisqArray-class}
 \alias{RandomChisqArraySeed-class}
+\alias{RandomChisqMatrix-class}
 \alias{sampleDistrParam,RandomChisqArraySeed-method}
 \alias{sampleDistrFun,RandomChisqArraySeed-method}
 \alias{matrixClass,RandomChisqArraySeed-method}
 \alias{RandomChisqArraySeed}
 \alias{DelayedArray,RandomChisqArraySeed-method}
 \alias{RandomChisqArray}
-\title{DelayedArray of chunked chi-squared-distributed values}
+\title{DelayedArray of random chi-squared-distributed values}
 \usage{
 RandomChisqArraySeed(dim, df, ncp = 0, chunkdim = NULL)
 

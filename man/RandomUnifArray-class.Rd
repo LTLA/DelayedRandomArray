@@ -4,6 +4,7 @@
 \name{RandomUnifArray-class}
 \alias{RandomUnifArray-class}
 \alias{RandomUnifArraySeed-class}
+\alias{RandomUnifMatrix-class}
 \alias{sampleDistrParam,RandomUnifArraySeed-method}
 \alias{sampleDistrFun,RandomUnifArraySeed-method}
 \alias{matrixClass,RandomUnifArraySeed-method}

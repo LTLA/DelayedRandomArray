@@ -1,4 +1,4 @@
-#' DelayedArray of F-distributed values
+#' DelayedArray of random F-distributed values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of F-distributed values.
 #'
@@ -19,9 +19,11 @@
 #' @aliases
 #' RandomFArray-class
 #' RandomFArraySeed-class
+#' RandomFMatrix-class
 #' sampleDistrParam,RandomFArraySeed-method
 #' sampleDistrFun,RandomFArraySeed-method
 #' matrixClass,RandomFArraySeed-method
+#' extract_array,RandomFArraySeed-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

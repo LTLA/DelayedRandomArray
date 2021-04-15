@@ -1,4 +1,4 @@
-#' DelayedArray of chunked exponential values
+#' DelayedArray of random exponential values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of exponentially distributed values.
 #'
@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomExpArray-class
 #' RandomExpArraySeed-class
+#' RandomExpMatrix-class
 #' sampleDistrParam,RandomExpArraySeed-method
 #' sampleDistrFun,RandomExpArraySeed-method
 #' matrixClass,RandomExpArraySeed-method

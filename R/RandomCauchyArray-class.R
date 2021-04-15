@@ -1,4 +1,4 @@
-#' DelayedArray of chunked Cauchy-distributed values
+#' DelayedArray of random Cauchy-distributed values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of Cauchy-distributed values.
 #'
@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomCauchyArray-class
 #' RandomCauchyArraySeed-class
+#' RandomCauchyMatrix-class
 #' sampleDistrParam,RandomCauchyArraySeed-method
 #' sampleDistrFun,RandomCauchyArraySeed-method
 #' matrixClass,RandomCauchyArraySeed-method

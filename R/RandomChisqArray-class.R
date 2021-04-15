@@ -1,4 +1,4 @@
-#' DelayedArray of chunked chi-squared-distributed values
+#' DelayedArray of random chi-squared-distributed values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of chi-squared-distributed values.
 #'
@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomChisqArray-class
 #' RandomChisqArraySeed-class
+#' RandomChisqMatrix-class
 #' sampleDistrParam,RandomChisqArraySeed-method
 #' sampleDistrFun,RandomChisqArraySeed-method
 #' matrixClass,RandomChisqArraySeed-method

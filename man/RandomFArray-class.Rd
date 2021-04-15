@@ -4,13 +4,15 @@
 \name{RandomFArray-class}
 \alias{RandomFArray-class}
 \alias{RandomFArraySeed-class}
+\alias{RandomFMatrix-class}
 \alias{sampleDistrParam,RandomFArraySeed-method}
 \alias{sampleDistrFun,RandomFArraySeed-method}
 \alias{matrixClass,RandomFArraySeed-method}
+\alias{extract_array,RandomFArraySeed-method}
 \alias{RandomFArraySeed}
 \alias{DelayedArray,RandomFArraySeed-method}
 \alias{RandomFArray}
-\title{DelayedArray of F-distributed values}
+\title{DelayedArray of random F-distributed values}
 \usage{
 RandomFArraySeed(dim, df1, df2, ncp = NULL, chunkdim = NULL)
 

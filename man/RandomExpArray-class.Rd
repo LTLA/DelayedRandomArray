@@ -4,13 +4,14 @@
 \name{RandomExpArray-class}
 \alias{RandomExpArray-class}
 \alias{RandomExpArraySeed-class}
+\alias{RandomExpMatrix-class}
 \alias{sampleDistrParam,RandomExpArraySeed-method}
 \alias{sampleDistrFun,RandomExpArraySeed-method}
 \alias{matrixClass,RandomExpArraySeed-method}
 \alias{RandomExpArraySeed}
 \alias{DelayedArray,RandomExpArraySeed-method}
 \alias{RandomExpArray}
-\title{DelayedArray of chunked exponential values}
+\title{DelayedArray of random exponential values}
 \usage{
 RandomExpArraySeed(dim, rate = 1, chunkdim = NULL)
 

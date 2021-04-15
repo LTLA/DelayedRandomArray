@@ -1,4 +1,4 @@
-#' DelayedArray of chunked beta-distributed values
+#' DelayedArray of random beta-distributed values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of beta-distributed values.
 #'
@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomBetaArray-class
 #' RandomBetaArraySeed-class
+#' RandomBetaMatrix-class
 #' sampleDistrParam,RandomBetaArraySeed-method
 #' sampleDistrFun,RandomBetaArraySeed-method
 #' matrixClass,RandomBetaArraySeed-method

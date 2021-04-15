@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomBinomArray-class
 #' RandomBinomArraySeed-class
+#' RandomBinomMatrix-class
 #' sampleDistrParam,RandomBinomArraySeed-method
 #' sampleDistrFun,RandomBinomArraySeed-method
 #' matrixClass,RandomBinomArraySeed-method

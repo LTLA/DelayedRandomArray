@@ -4,13 +4,14 @@
 \name{RandomBetaArray-class}
 \alias{RandomBetaArray-class}
 \alias{RandomBetaArraySeed-class}
+\alias{RandomBetaMatrix-class}
 \alias{sampleDistrParam,RandomBetaArraySeed-method}
 \alias{sampleDistrFun,RandomBetaArraySeed-method}
 \alias{matrixClass,RandomBetaArraySeed-method}
 \alias{RandomBetaArraySeed}
 \alias{DelayedArray,RandomBetaArraySeed-method}
 \alias{RandomBetaArray}
-\title{DelayedArray of chunked beta-distributed values}
+\title{DelayedArray of random beta-distributed values}
 \usage{
 RandomBetaArraySeed(dim, shape1, shape2, ncp = 0, chunkdim = NULL)
 

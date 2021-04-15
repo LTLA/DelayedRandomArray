@@ -4,6 +4,7 @@
 \name{RandomBinomArray-class}
 \alias{RandomBinomArray-class}
 \alias{RandomBinomArraySeed-class}
+\alias{RandomBinomMatrix-class}
 \alias{sampleDistrParam,RandomBinomArraySeed-method}
 \alias{sampleDistrFun,RandomBinomArraySeed-method}
 \alias{matrixClass,RandomBinomArraySeed-method}

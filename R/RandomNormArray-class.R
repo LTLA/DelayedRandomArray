@@ -1,4 +1,4 @@
-#' DelayedArray of chunked normal values
+#' DelayedArray of random normal values
 #'
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of normally distributed values.
 #'
@@ -17,6 +17,7 @@
 #' @aliases
 #' RandomNormArray-class
 #' RandomNormArraySeed-class
+#' RandomNormMatrix-class
 #' sampleDistrParam,RandomNormArraySeed-method
 #' sampleDistrFun,RandomNormArraySeed-method
 #' matrixClass,RandomNormArraySeed-method
