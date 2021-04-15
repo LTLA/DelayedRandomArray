@@ -61,11 +61,11 @@ setMethod("sampleDistrParam", "RandomBinomArraySeed", function(x) c("size", "pro
 setMethod("sampleDistrFun", "RandomBinomArraySeed", function(x) stats::qbinom)
 
 #' @export
-setMethod("matrixClass", "RandomBinomArray", function(x) "RandomBinomialMatrix")
+setMethod("matrixClass", "RandomBinomArray", function(x) "RandomBinomMatrix")
 
 #' @export
 #' @rdname RandomBinomArray-class
-setMethod("DelayedArray", "RandomBinomArraySeed", function(seed) new_DelayedArray(seed, Class="RandomBinomialArray"))
+setMethod("DelayedArray", "RandomBinomArraySeed", function(seed) new_DelayedArray(seed, Class="RandomBinomArray"))
 
 #' @export
 #' @rdname RandomBinomArray-class

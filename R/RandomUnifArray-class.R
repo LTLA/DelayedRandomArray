@@ -59,11 +59,11 @@ setMethod("sampleDistrParam", "RandomUnifArraySeed", function(x) c("min", "max")
 setMethod("sampleDistrFun", "RandomUnifArraySeed", function(x) stats::qunif)
 
 #' @export
-setMethod("matrixClass", "RandomUnifArray", function(x) "RandomUniformMatrix")
+setMethod("matrixClass", "RandomUnifArray", function(x) "RandomUnifMatrix")
 
 #' @export
 #' @rdname RandomUnifArray-class
-setMethod("DelayedArray", "RandomUnifArraySeed", function(seed) new_DelayedArray(seed, Class="RandomUniformArray"))
+setMethod("DelayedArray", "RandomUnifArraySeed", function(seed) new_DelayedArray(seed, Class="RandomUnifArray"))
 
 #' @export
 #' @rdname RandomUnifArray-class

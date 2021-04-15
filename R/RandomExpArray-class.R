@@ -60,11 +60,11 @@ setMethod("sampleDistrParam", "RandomExpArraySeed", function(x) "rate")
 setMethod("sampleDistrFun", "RandomExpArraySeed", function(x) stats::qexp)
 
 #' @export
-setMethod("matrixClass", "RandomExpArray", function(x) "RandomExponentialMatrix")
+setMethod("matrixClass", "RandomExpArray", function(x) "RandomExpMatrix")
 
 #' @export
 #' @rdname RandomExpArray-class
-setMethod("DelayedArray", "RandomExpArraySeed", function(seed) new_DelayedArray(seed, Class="RandomExponentialArray"))
+setMethod("DelayedArray", "RandomExpArraySeed", function(seed) new_DelayedArray(seed, Class="RandomExpArray"))
 
 #' @export
 #' @rdname RandomExpArray-class

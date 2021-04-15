@@ -60,11 +60,11 @@ setMethod("sampleDistrParam", "RandomPoisArraySeed", function(x) c("lambda"))
 setMethod("sampleDistrFun", "RandomPoisArraySeed", function(x) stats::qpois)
 
 #' @export
-setMethod("matrixClass", "RandomPoisArray", function(x) "RandomPoissonMatrix")
+setMethod("matrixClass", "RandomPoisArray", function(x) "RandomPoisMatrix")
 
 #' @export
 #' @rdname RandomPoisArray-class
-setMethod("DelayedArray", "RandomPoisArraySeed", function(seed) new_DelayedArray(seed, Class="RandomPoissonArray"))
+setMethod("DelayedArray", "RandomPoisArraySeed", function(seed) new_DelayedArray(seed, Class="RandomPoisArray"))
 
 #' @export
 #' @rdname RandomPoisArray-class

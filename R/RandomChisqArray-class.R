@@ -60,11 +60,11 @@ setMethod("sampleDistrParam", "RandomChisqArraySeed", function(x) c("df", "ncp")
 setMethod("sampleDistrFun", "RandomChisqArraySeed", function(x) stats::qchisq)
 
 #' @export
-setMethod("matrixClass", "RandomChisqArray", function(x) "RandomChisquaredMatrix")
+setMethod("matrixClass", "RandomChisqArray", function(x) "RandomChisqMatrix")
 
 #' @export
 #' @rdname RandomChisqArray-class
-setMethod("DelayedArray", "RandomChisqArraySeed", function(seed) new_DelayedArray(seed, Class="RandomChisquaredArray"))
+setMethod("DelayedArray", "RandomChisqArraySeed", function(seed) new_DelayedArray(seed, Class="RandomChisqArray"))
 
 #' @export
 #' @rdname RandomChisqArray-class

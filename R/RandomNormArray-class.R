@@ -59,11 +59,11 @@ setMethod("sampleDistrParam", "RandomNormArraySeed", function(x) c("mean", "sd")
 setMethod("sampleDistrFun", "RandomNormArraySeed", function(x) stats::qnorm)
 
 #' @export
-setMethod("matrixClass", "RandomNormArray", function(x) "RandomNormalMatrix")
+setMethod("matrixClass", "RandomNormArray", function(x) "RandomNormMatrix")
 
 #' @export
 #' @rdname RandomNormArray-class
-setMethod("DelayedArray", "RandomNormArraySeed", function(seed) new_DelayedArray(seed, Class="RandomNormalArray"))
+setMethod("DelayedArray", "RandomNormArraySeed", function(seed) new_DelayedArray(seed, Class="RandomNormArray"))
 
 #' @export
 #' @rdname RandomNormArray-class
