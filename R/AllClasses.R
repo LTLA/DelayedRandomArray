@@ -112,3 +112,23 @@ setClass("RandomNbinomArray", contains="DelayedArray", representation(seed="Rand
 #' @export
 setClass("RandomNbinomMatrix", contains="DelayedMatrix", representation(seed="RandomNbinomArraySeed"))
 
+
+#' @export
+setClass("RandomGeomArraySeed", contains="RandomArraySeed", slots=c(prob="ANY"))
+
+#' @export
+setClass("RandomGeomArray", contains="DelayedArray", representation(seed="RandomGeomArraySeed"))
+
+#' @export
+setClass("RandomGeomMatrix", contains="DelayedMatrix", representation(seed="RandomGeomArraySeed"))
+
+
+#' @export
+setClass("RandomHyperArraySeed", contains="RandomArraySeed", slots=c(m="ANY", n="ANY", k="ANY"))
+
+#' @export
+setClass("RandomHyperArray", contains="DelayedArray", representation(seed="RandomHyperArraySeed"))
+
+#' @export
+setClass("RandomHyperMatrix", contains="DelayedMatrix", representation(seed="RandomHyperArraySeed"))
+
