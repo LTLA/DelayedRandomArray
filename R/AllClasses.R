@@ -132,3 +132,54 @@ setClass("RandomHyperArray", contains="DelayedArray", representation(seed="Rando
 #' @export
 setClass("RandomHyperMatrix", contains="DelayedMatrix", representation(seed="RandomHyperArraySeed"))
 
+
+#' @export
+setClass("RandomLnormArraySeed", contains="RandomArraySeed", slots=c(meanlog="ANY", sdlog="ANY"))
+
+#' @export
+setClass("RandomLnormArray", contains="DelayedArray", representation(seed="RandomLnormArraySeed"))
+
+#' @export
+setClass("RandomLnormMatrix", contains="DelayedMatrix", representation(seed="RandomLnormArraySeed"))
+
+
+#' @export
+setClass("RandomLogisArraySeed", contains="RandomArraySeed", slots=c(location="ANY", scale="ANY"))
+
+#' @export
+setClass("RandomLogisArray", contains="DelayedArray", representation(seed="RandomLogisArraySeed"))
+
+#' @export
+setClass("RandomLogisMatrix", contains="DelayedMatrix", representation(seed="RandomLogisArraySeed"))
+
+
+#' @export
+setClass("RandomTArraySeed", contains="RandomArraySeed", slots=c(df="ANY", ncp="ANY"))
+
+#' @export
+setClass("RandomTArray", contains="DelayedArray", representation(seed="RandomTArraySeed"))
+
+#' @export
+setClass("RandomTMatrix", contains="DelayedMatrix", representation(seed="RandomTArraySeed"))
+
+
+#' @export
+setClass("RandomWilcoxArraySeed", contains="RandomArraySeed", slots=c(m="ANY", n="ANY"))
+
+#' @export
+setClass("RandomWilcoxArray", contains="DelayedArray", representation(seed="RandomWilcoxArraySeed"))
+
+#' @export
+setClass("RandomWilcoxMatrix", contains="DelayedMatrix", representation(seed="RandomWilcoxArraySeed"))
+
+
+#' @export
+setClass("RandomWeibullArraySeed", contains="RandomArraySeed", slots=c(shape="ANY", scale="ANY"))
+
+#' @export
+setClass("RandomWeibullArray", contains="DelayedArray", representation(seed="RandomWeibullArraySeed"))
+
+#' @export
+setClass("RandomWeibullMatrix", contains="DelayedMatrix", representation(seed="RandomWeibullArraySeed"))
+
+
