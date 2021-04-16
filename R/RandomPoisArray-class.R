@@ -6,7 +6,7 @@
 #' @param seed A RandomPoisArraySeed object.
 #' @param lambda Numeric vector used as \code{lambda} in \code{\link{qpois}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
-#' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomPoisArray object,
@@ -20,7 +20,7 @@
 #' RandomPoisMatrix-class
 #' sampleDistrParam,RandomPoisArraySeed-method
 #' sampleDistrFun,RandomPoisArraySeed-method
-#' matrixClass,RandomPoisArraySeed-method
+#' matrixClass,RandomPoisArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

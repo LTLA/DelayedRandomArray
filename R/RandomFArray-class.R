@@ -6,7 +6,7 @@
 #' @param df1,df2,ncp Numeric vector used as the argument of the same name in \code{\link{qf}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
 #'
-#' \code{ncp} may also be \code{NULL}, in which case a central F distribution is assumed.
+#' If \code{ncp} is missing, a central F distribution is assumed.
 #' @param chunkdim Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.
 #' @param seed A RandomFArraySeed object.
 #' 
@@ -22,7 +22,7 @@
 #' RandomFMatrix-class
 #' sampleDistrParam,RandomFArraySeed-method
 #' sampleDistrFun,RandomFArraySeed-method
-#' matrixClass,RandomFArraySeed-method
+#' matrixClass,RandomFArray-method
 #' extract_array,RandomFArraySeed-method
 #'
 #' @seealso
@@ -52,7 +52,7 @@ NULL
 
 #' @export
 #' @rdname RandomFArray-class
-RandomFArraySeed <- function(dim, df1, df2, ncp=NULL, chunkdim=NULL) {
+RandomFArraySeed <- function(dim, df1, df2, ncp, chunkdim=NULL) {
     if (missing(ncp)) {
         ncp <- NULL
     }

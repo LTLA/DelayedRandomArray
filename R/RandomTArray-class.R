@@ -3,10 +3,10 @@
 #' A \linkS4class{DelayedArray} subclass that performs on-the-fly sampling of F-distributed values.
 #'
 #' @param dim Integer vector of positive length, specifying the dimensions of the array.
-#' @param df1,df2,ncp Numeric vector used as the argument of the same name in \code{\link{qf}}.
+#' @param df,ncp Numeric vector used as the argument of the same name in \code{\link{qf}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
 #'
-#' \code{ncp} may also be \code{NULL}, in which case a central F distribution is assumed.
+#' If \code{ncp} is missing, a central T distribution is assumed.
 #' @param chunkdim Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.
 #' @param seed A RandomTArraySeed object.
 #' 
@@ -19,10 +19,10 @@
 #' @aliases
 #' RandomTArray-class
 #' RandomTArraySeed-class
-#' RandomFMatrix-class
+#' RandomTMatrix-class
 #' sampleDistrParam,RandomTArraySeed-method
 #' sampleDistrFun,RandomTArraySeed-method
-#' matrixClass,RandomTArraySeed-method
+#' matrixClass,RandomTArray-method
 #' extract_array,RandomTArraySeed-method
 #'
 #' @seealso

@@ -6,7 +6,7 @@
 #' @param seed A RandomHyperArraySeed object.
 #' @param m,n,k Numeric vector used as the argument of the same name in \code{\link{qhyper}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
-#' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomHyperArray object,
@@ -20,7 +20,7 @@
 #' RandomHyperMatrix-class
 #' sampleDistrParam,RandomHyperArraySeed-method
 #' sampleDistrFun,RandomHyperArraySeed-method
-#' matrixClass,RandomHyperArraySeed-method
+#' matrixClass,RandomHyperArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

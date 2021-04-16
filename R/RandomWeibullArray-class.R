@@ -19,7 +19,7 @@
 #' RandomWeibullMatrix-class
 #' sampleDistrParam,RandomWeibullArraySeed-method
 #' sampleDistrFun,RandomWeibullArraySeed-method
-#' matrixClass,RandomWeibullArraySeed-method
+#' matrixClass,RandomWeibullArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
@@ -47,8 +47,8 @@ NULL
 
 #' @export
 #' @rdname RandomWeibullArray-class
-RandomWeibullArraySeed <- function(dim, shape, scale=1, chunkdim=NULL, sparse=FALSE) {
-    new("RandomWeibullArraySeed", dim=dim, shape=shape, scale=scale, chunkdim=chunkdim, sparse=sparse)
+RandomWeibullArraySeed <- function(dim, shape, scale=1, chunkdim=NULL) {
+    new("RandomWeibullArraySeed", dim=dim, shape=shape, scale=scale, chunkdim=chunkdim)
 }
 
 #' @export

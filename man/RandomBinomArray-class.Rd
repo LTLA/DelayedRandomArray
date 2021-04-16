@@ -7,7 +7,7 @@
 \alias{RandomBinomMatrix-class}
 \alias{sampleDistrParam,RandomBinomArraySeed-method}
 \alias{sampleDistrFun,RandomBinomArraySeed-method}
-\alias{matrixClass,RandomBinomArraySeed-method}
+\alias{matrixClass,RandomBinomArray-method}
 \alias{RandomBinomArraySeed}
 \alias{DelayedArray,RandomBinomArraySeed-method}
 \alias{RandomBinomArray}
@@ -27,7 +27,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
-\item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomBinomArraySeed object.}
 }

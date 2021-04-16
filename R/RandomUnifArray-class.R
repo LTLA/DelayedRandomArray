@@ -20,7 +20,7 @@
 #' RandomUnifMatrix-class
 #' sampleDistrParam,RandomUnifArraySeed-method
 #' sampleDistrFun,RandomUnifArraySeed-method
-#' matrixClass,RandomUnifArraySeed-method
+#' matrixClass,RandomUnifArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

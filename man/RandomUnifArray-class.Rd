@@ -7,7 +7,7 @@
 \alias{RandomUnifMatrix-class}
 \alias{sampleDistrParam,RandomUnifArraySeed-method}
 \alias{sampleDistrFun,RandomUnifArraySeed-method}
-\alias{matrixClass,RandomUnifArraySeed-method}
+\alias{matrixClass,RandomUnifArray-method}
 \alias{RandomUnifArraySeed}
 \alias{DelayedArray,RandomUnifArraySeed-method}
 \alias{RandomUnifArray}

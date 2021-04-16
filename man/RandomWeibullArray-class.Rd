@@ -7,13 +7,13 @@
 \alias{RandomWeibullMatrix-class}
 \alias{sampleDistrParam,RandomWeibullArraySeed-method}
 \alias{sampleDistrFun,RandomWeibullArraySeed-method}
-\alias{matrixClass,RandomWeibullArraySeed-method}
+\alias{matrixClass,RandomWeibullArray-method}
 \alias{RandomWeibullArraySeed}
 \alias{DelayedArray,RandomWeibullArraySeed-method}
 \alias{RandomWeibullArray}
 \title{DelayedArray of random Weibull-distributed values}
 \usage{
-RandomWeibullArraySeed(dim, shape, scale = 1, chunkdim = NULL, sparse = FALSE)
+RandomWeibullArraySeed(dim, shape, scale = 1, chunkdim = NULL)
 
 \S4method{DelayedArray}{RandomWeibullArraySeed}(seed)
 

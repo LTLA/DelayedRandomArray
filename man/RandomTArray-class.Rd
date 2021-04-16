@@ -4,10 +4,10 @@
 \name{RandomTArray-class}
 \alias{RandomTArray-class}
 \alias{RandomTArraySeed-class}
-\alias{RandomFMatrix-class}
+\alias{RandomTMatrix-class}
 \alias{sampleDistrParam,RandomTArraySeed-method}
 \alias{sampleDistrFun,RandomTArraySeed-method}
-\alias{matrixClass,RandomTArraySeed-method}
+\alias{matrixClass,RandomTArray-method}
 \alias{extract_array,RandomTArraySeed-method}
 \alias{RandomTArraySeed}
 \alias{DelayedArray,RandomTArraySeed-method}
@@ -23,14 +23,14 @@ RandomTArray(dim, df, ncp, chunkdim = NULL)
 \arguments{
 \item{dim}{Integer vector of positive length, specifying the dimensions of the array.}
 
+\item{df, ncp}{Numeric vector used as the argument of the same name in \code{\link{qf}}.
+Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
+
+If \code{ncp} is missing, a central T distribution is assumed.}
+
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
 \item{seed}{A RandomTArraySeed object.}
-
-\item{df1, df2, ncp}{Numeric vector used as the argument of the same name in \code{\link{qf}}.
-Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
-
-\code{ncp} may also be \code{NULL}, in which case a central F distribution is assumed.}
 }
 \value{
 All constructors return an instance of a RandomTArray object,

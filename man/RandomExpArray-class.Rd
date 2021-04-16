@@ -7,7 +7,7 @@
 \alias{RandomExpMatrix-class}
 \alias{sampleDistrParam,RandomExpArraySeed-method}
 \alias{sampleDistrFun,RandomExpArraySeed-method}
-\alias{matrixClass,RandomExpArraySeed-method}
+\alias{matrixClass,RandomExpArray-method}
 \alias{RandomExpArraySeed}
 \alias{DelayedArray,RandomExpArraySeed-method}
 \alias{RandomExpArray}

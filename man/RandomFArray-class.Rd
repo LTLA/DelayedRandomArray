@@ -7,14 +7,14 @@
 \alias{RandomFMatrix-class}
 \alias{sampleDistrParam,RandomFArraySeed-method}
 \alias{sampleDistrFun,RandomFArraySeed-method}
-\alias{matrixClass,RandomFArraySeed-method}
+\alias{matrixClass,RandomFArray-method}
 \alias{extract_array,RandomFArraySeed-method}
 \alias{RandomFArraySeed}
 \alias{DelayedArray,RandomFArraySeed-method}
 \alias{RandomFArray}
 \title{DelayedArray of random F-distributed values}
 \usage{
-RandomFArraySeed(dim, df1, df2, ncp = NULL, chunkdim = NULL)
+RandomFArraySeed(dim, df1, df2, ncp, chunkdim = NULL)
 
 \S4method{DelayedArray}{RandomFArraySeed}(seed)
 
@@ -26,7 +26,7 @@ RandomFArray(dim, df1, df2, ncp, chunkdim = NULL)
 \item{df1, df2, ncp}{Numeric vector used as the argument of the same name in \code{\link{qf}}.
 Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
 
-\code{ncp} may also be \code{NULL}, in which case a central F distribution is assumed.}
+If \code{ncp} is missing, a central F distribution is assumed.}
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 

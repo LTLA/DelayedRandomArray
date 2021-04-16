@@ -7,7 +7,7 @@
 \alias{RandomHyperMatrix-class}
 \alias{sampleDistrParam,RandomHyperArraySeed-method}
 \alias{sampleDistrFun,RandomHyperArraySeed-method}
-\alias{matrixClass,RandomHyperArraySeed-method}
+\alias{matrixClass,RandomHyperArray-method}
 \alias{RandomHyperArraySeed}
 \alias{DelayedArray,RandomHyperArraySeed-method}
 \alias{RandomHyperArray}
@@ -27,7 +27,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
-\item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomHyperArraySeed object.}
 }

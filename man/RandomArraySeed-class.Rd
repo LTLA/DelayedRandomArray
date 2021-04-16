@@ -10,6 +10,8 @@
 \alias{extract_array,RandomArraySeed-method}
 \alias{is_sparse,RandomArraySeed-method}
 \alias{extract_sparse_array,RandomArraySeed-method}
+\alias{sampleDistrFun}
+\alias{sampleDistrParam}
 \title{A DelayedArray seed supplying chunked random values}
 \description{
 The RandomArraySeed is a \linkS4class{DelayedArray} seed that performs reproducible, on-demand sampling of randomly distributed values.

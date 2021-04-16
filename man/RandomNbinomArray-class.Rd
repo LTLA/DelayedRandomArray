@@ -7,7 +7,7 @@
 \alias{RandomNbinomMatrix-class}
 \alias{sampleDistrParam,RandomNbinomArraySeed-method}
 \alias{sampleDistrFun,RandomNbinomArraySeed-method}
-\alias{matrixClass,RandomNbinomArraySeed-method}
+\alias{matrixClass,RandomNbinomArray-method}
 \alias{extract_array,RandomNbinomArraySeed-method}
 \alias{RandomNbinomArraySeed}
 \alias{DelayedArray,RandomNbinomArraySeed-method}
@@ -37,7 +37,7 @@ Exactly one of \code{prob} or \code{mu} should be supplied.}
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
-\item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomNbinomArraySeed object.}
 }

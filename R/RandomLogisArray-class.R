@@ -20,7 +20,7 @@
 #' RandomLogisMatrix-class
 #' sampleDistrParam,RandomLogisArraySeed-method
 #' sampleDistrFun,RandomLogisArraySeed-method
-#' matrixClass,RandomLogisArraySeed-method
+#' matrixClass,RandomLogisArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

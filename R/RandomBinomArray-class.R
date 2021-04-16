@@ -6,7 +6,7 @@
 #' @param seed A RandomBinomArraySeed object.
 #' @param size,prob Numeric vector used as the argument of the same name in \code{\link{qbinom}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
-#' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomBinomArray object,
@@ -20,7 +20,7 @@
 #' RandomBinomMatrix-class
 #' sampleDistrParam,RandomBinomArraySeed-method
 #' sampleDistrFun,RandomBinomArraySeed-method
-#' matrixClass,RandomBinomArraySeed-method
+#' matrixClass,RandomBinomArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

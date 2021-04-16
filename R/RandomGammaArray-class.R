@@ -22,7 +22,7 @@
 #' RandomGammaMatrix-class
 #' sampleDistrParam,RandomGammaArraySeed-method
 #' sampleDistrFun,RandomGammaArraySeed-method
-#' matrixClass,RandomGammaArraySeed-method
+#' matrixClass,RandomGammaArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

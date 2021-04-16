@@ -7,7 +7,7 @@
 \alias{RandomBetaMatrix-class}
 \alias{sampleDistrParam,RandomBetaArraySeed-method}
 \alias{sampleDistrFun,RandomBetaArraySeed-method}
-\alias{matrixClass,RandomBetaArraySeed-method}
+\alias{matrixClass,RandomBetaArray-method}
 \alias{RandomBetaArraySeed}
 \alias{DelayedArray,RandomBetaArraySeed-method}
 \alias{RandomBetaArray}
@@ -17,7 +17,7 @@ RandomBetaArraySeed(dim, shape1, shape2, ncp = 0, chunkdim = NULL)
 
 \S4method{DelayedArray}{RandomBetaArraySeed}(seed)
 
-RandomBetaArray(dim, rate = 1, chunkdim = NULL)
+RandomBetaArray(dim, shape1, shape2, ncp = 0, chunkdim = NULL)
 }
 \arguments{
 \item{dim}{Integer vector of positive length, specifying the dimensions of the array.}

@@ -6,7 +6,7 @@
 #' @param seed A RandomGeomArraySeed object.
 #' @param prob Numeric vector used as \code{prob} in \code{\link{qgeom}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
-#' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomGeomArray object,
@@ -20,7 +20,7 @@
 #' RandomGeomMatrix-class
 #' sampleDistrParam,RandomGeomArraySeed-method
 #' sampleDistrFun,RandomGeomArraySeed-method
-#' matrixClass,RandomGeomArraySeed-method
+#' matrixClass,RandomGeomArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

@@ -1,6 +1,7 @@
 Package: DelayedRandomArray
 Version: 0.99.0
 Date: 2021-04-11
+Title: Delayed Arrays of Random Values
 Description: Implements a DelayedArray of random values,
     where the realization of the sampled values is delayed until they are needed.
     Reproducible sampling within any subarray is achieved by chunking;
@@ -10,6 +11,7 @@ License: GPL-3
 Depends:
     DelayedArray
 Imports:
+    methods,
     dqrng,
     Rcpp
 LinkingTo:
@@ -20,7 +22,8 @@ Suggests:
     testthat,
     knitr,
     BiocStyle,
-    rmarkdown
+    rmarkdown,
+    Matrix
 SystemRequirements: C++11
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

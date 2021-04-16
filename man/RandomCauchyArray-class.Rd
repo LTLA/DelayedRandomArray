@@ -7,7 +7,7 @@
 \alias{RandomCauchyMatrix-class}
 \alias{sampleDistrParam,RandomCauchyArraySeed-method}
 \alias{sampleDistrFun,RandomCauchyArraySeed-method}
-\alias{matrixClass,RandomCauchyArraySeed-method}
+\alias{matrixClass,RandomCauchyArray-method}
 \alias{RandomCauchyArraySeed}
 \alias{DelayedArray,RandomCauchyArraySeed-method}
 \alias{RandomCauchyArray}

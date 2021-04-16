@@ -7,7 +7,7 @@
 \alias{RandomLogisMatrix-class}
 \alias{sampleDistrParam,RandomLogisArraySeed-method}
 \alias{sampleDistrFun,RandomLogisArraySeed-method}
-\alias{matrixClass,RandomLogisArraySeed-method}
+\alias{matrixClass,RandomLogisArray-method}
 \alias{RandomLogisArraySeed}
 \alias{DelayedArray,RandomLogisArraySeed-method}
 \alias{RandomLogisArray}

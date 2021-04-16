@@ -8,7 +8,7 @@
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
 #'
 #' Exactly one of \code{prob} or \code{mu} should be supplied.
-#' @param sparse Logical scalar indicating whether the sampled matrix should be treated as sparse. 
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomNbinomArray object,
@@ -22,7 +22,7 @@
 #' RandomNbinomMatrix-class
 #' sampleDistrParam,RandomNbinomArraySeed-method
 #' sampleDistrFun,RandomNbinomArraySeed-method
-#' matrixClass,RandomNbinomArraySeed-method
+#' matrixClass,RandomNbinomArray-method
 #' extract_array,RandomNbinomArraySeed-method
 #'
 #' @seealso

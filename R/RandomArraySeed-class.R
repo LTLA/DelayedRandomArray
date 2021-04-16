@@ -74,6 +74,8 @@
 #' extract_array,RandomArraySeed-method
 #' is_sparse,RandomArraySeed-method
 #' extract_sparse_array,RandomArraySeed-method
+#' sampleDistrFun
+#' sampleDistrParam
 #'
 #' @docType class
 #' @name RandomArraySeed-class
@@ -134,8 +136,6 @@ setMethod("show", "RandomArraySeed", function(object) {
 })
 
 #' @export
-#' @importFrom Rcpp sourceCpp
-#' @useDynLib DelayedRandomArray
 setMethod("extract_array", "RandomArraySeed", function(x, index) {
     reindex <- .obtain_unique_sorted_index(index)
     arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)

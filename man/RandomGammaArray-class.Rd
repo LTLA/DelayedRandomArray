@@ -7,7 +7,7 @@
 \alias{RandomGammaMatrix-class}
 \alias{sampleDistrParam,RandomGammaArraySeed-method}
 \alias{sampleDistrFun,RandomGammaArraySeed-method}
-\alias{matrixClass,RandomGammaArraySeed-method}
+\alias{matrixClass,RandomGammaArray-method}
 \alias{RandomGammaArraySeed}
 \alias{DelayedArray,RandomGammaArraySeed-method}
 \alias{RandomGammaArray}

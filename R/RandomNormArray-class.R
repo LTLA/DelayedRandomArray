@@ -20,7 +20,7 @@
 #' RandomNormMatrix-class
 #' sampleDistrParam,RandomNormArraySeed-method
 #' sampleDistrFun,RandomNormArraySeed-method
-#' matrixClass,RandomNormArraySeed-method
+#' matrixClass,RandomNormArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

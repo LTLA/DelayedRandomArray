@@ -20,7 +20,7 @@
 #' RandomBetaMatrix-class
 #' sampleDistrParam,RandomBetaArraySeed-method
 #' sampleDistrFun,RandomBetaArraySeed-method
-#' matrixClass,RandomBetaArraySeed-method
+#' matrixClass,RandomBetaArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
@@ -68,6 +68,6 @@ setMethod("DelayedArray", "RandomBetaArraySeed", function(seed) new_DelayedArray
 
 #' @export
 #' @rdname RandomBetaArray-class
-RandomBetaArray <- function(dim, rate=1, chunkdim=NULL) {
-    DelayedArray(RandomBetaArraySeed(dim, rate, chunkdim=chunkdim))
+RandomBetaArray <- function(dim, shape1, shape2, ncp=0, chunkdim=NULL) {
+    DelayedArray(RandomBetaArraySeed(dim, shape1, shape2, ncp=ncp, chunkdim=chunkdim))
 }

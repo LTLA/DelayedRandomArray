@@ -7,7 +7,7 @@
 \alias{RandomWilcoxMatrix-class}
 \alias{sampleDistrParam,RandomWilcoxArraySeed-method}
 \alias{sampleDistrFun,RandomWilcoxArraySeed-method}
-\alias{matrixClass,RandomWilcoxArraySeed-method}
+\alias{matrixClass,RandomWilcoxArray-method}
 \alias{RandomWilcoxArraySeed}
 \alias{DelayedArray,RandomWilcoxArraySeed-method}
 \alias{RandomWilcoxArray}
@@ -26,6 +26,8 @@ RandomWilcoxArray(dim, m, n, chunkdim = NULL)
 Alternatively, a numeric array-like object with the same dimensions as \code{dim}.}
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
+
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomWilcoxArraySeed object.}
 }

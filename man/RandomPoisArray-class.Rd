@@ -7,7 +7,7 @@
 \alias{RandomPoisMatrix-class}
 \alias{sampleDistrParam,RandomPoisArraySeed-method}
 \alias{sampleDistrFun,RandomPoisArraySeed-method}
-\alias{matrixClass,RandomPoisArraySeed-method}
+\alias{matrixClass,RandomPoisArray-method}
 \alias{RandomPoisArraySeed}
 \alias{DelayedArray,RandomPoisArraySeed-method}
 \alias{RandomPoisArray}
@@ -27,7 +27,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
-\item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomPoisArraySeed object.}
 }

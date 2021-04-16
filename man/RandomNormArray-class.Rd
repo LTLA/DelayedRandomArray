@@ -7,7 +7,7 @@
 \alias{RandomNormMatrix-class}
 \alias{sampleDistrParam,RandomNormArraySeed-method}
 \alias{sampleDistrFun,RandomNormArraySeed-method}
-\alias{matrixClass,RandomNormArraySeed-method}
+\alias{matrixClass,RandomNormArray-method}
 \alias{RandomNormArraySeed}
 \alias{DelayedArray,RandomNormArraySeed-method}
 \alias{RandomNormArray}

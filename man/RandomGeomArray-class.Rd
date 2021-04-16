@@ -7,7 +7,7 @@
 \alias{RandomGeomMatrix-class}
 \alias{sampleDistrParam,RandomGeomArraySeed-method}
 \alias{sampleDistrFun,RandomGeomArraySeed-method}
-\alias{matrixClass,RandomGeomArraySeed-method}
+\alias{matrixClass,RandomGeomArray-method}
 \alias{RandomGeomArraySeed}
 \alias{DelayedArray,RandomGeomArraySeed-method}
 \alias{RandomGeomArray}
@@ -27,7 +27,7 @@ Alternatively, a numeric array-like object with the same dimensions as \code{dim
 
 \item{chunkdim}{Integer vector of length equal to \code{dim}, containing the dimensions of each chunk.}
 
-\item{sparse}{Logical scalar indicating whether the sampled matrix should be treated as sparse.}
+\item{sparse}{Logical scalar indicating whether the sampled array should be treated as sparse.}
 
 \item{seed}{A RandomGeomArraySeed object.}
 }

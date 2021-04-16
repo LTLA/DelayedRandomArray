@@ -6,6 +6,7 @@
 #' @param seed A RandomWilcoxArraySeed object.
 #' @param m,n Numeric vector used as the argument of the same name in \code{\link{qwilcox}}.
 #' Alternatively, a numeric array-like object with the same dimensions as \code{dim}.
+#' @param sparse Logical scalar indicating whether the sampled array should be treated as sparse. 
 #' 
 #' @return 
 #' All constructors return an instance of a RandomWilcoxArray object,
@@ -19,7 +20,7 @@
 #' RandomWilcoxMatrix-class
 #' sampleDistrParam,RandomWilcoxArraySeed-method
 #' sampleDistrFun,RandomWilcoxArraySeed-method
-#' matrixClass,RandomWilcoxArraySeed-method
+#' matrixClass,RandomWilcoxArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
