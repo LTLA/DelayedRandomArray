@@ -88,12 +88,14 @@ setMethod("initialize", "RandomArraySeed", function(.Object, dim, chunkdim, spar
 
     if (is.null(chunkdim)) {
         chunkdim <- pmax(100L, as.integer(ceiling(sqrt(dim))))
-    } 
-    msg <- .is_valid_chunkdim(dim, chunkdim)
-    if (!is.null(msg)) {
-        stop(msg)
+        chunkdim <- pmin(chunkdim, dim)
+    } else {
+        chunkdim <- as.integer(chunkdim)
+        msg <- .is_valid_chunkdim(dim, chunkdim)
+        if (!is.null(msg)) {
+            stop(msg)
+        }
     }
-    chunkdim <- pmin(as.integer(chunkdim), dim)
 
     nchunks <- .compute_nchunks(dim, chunkdim)
     seeds <- generateSeedVectors(nchunks)
