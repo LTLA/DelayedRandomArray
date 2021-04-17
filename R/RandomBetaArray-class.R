@@ -20,6 +20,7 @@
 #' RandomBetaMatrix-class
 #' sampleDistrParam,RandomBetaArraySeed-method
 #' sampleDistrFun,RandomBetaArraySeed-method
+#' extract_array,RandomBetaArraySeed-method
 #' matrixClass,RandomBetaArray-method
 #'
 #' @seealso
@@ -50,14 +51,21 @@ NULL
 #' @export
 #' @rdname RandomBetaArray-class
 RandomBetaArraySeed <- function(dim, shape1, shape2, ncp=0, chunkdim=NULL) {
+    # Ensure that the corresponding internal routine in qbeta gets called if ncp is missing.
+    if (missing(ncp)) {
+        ncp <- NULL
+    }
     new("RandomBetaArraySeed", dim=dim, shape1=shape1, shape2=shape2, ncp=ncp, chunkdim=chunkdim)
 }
 
 #' @export
-setMethod("sampleDistrParam", "RandomBetaArraySeed", function(x) c("shape1", "shape2", "ncp"))
+setMethod("sampleDistrParam", "RandomBetaArraySeed", function(x) c("shape1", "shape2"))
 
 #' @export
 setMethod("sampleDistrFun", "RandomBetaArraySeed", function(x) stats::qbeta)
+
+#' @export
+setMethod("extract_array", "RandomBetaArraySeed", .ncp_extract_array)
 
 #' @export
 setMethod("matrixClass", "RandomBetaArray", function(x) "RandomBetaMatrix")
@@ -69,5 +77,11 @@ setMethod("DelayedArray", "RandomBetaArraySeed", function(seed) new_DelayedArray
 #' @export
 #' @rdname RandomBetaArray-class
 RandomBetaArray <- function(dim, shape1, shape2, ncp=0, chunkdim=NULL) {
-    DelayedArray(RandomBetaArraySeed(dim, shape1, shape2, ncp=ncp, chunkdim=chunkdim))
+    if (missing(ncp)) {
+        # Preserve missingness.
+        seed <- RandomBetaArraySeed(dim, shape1, shape2, chunkdim=chunkdim)
+    } else {
+        seed <- RandomBetaArraySeed(dim, shape1, shape2, ncp=ncp, chunkdim=chunkdim)
+    }
+    DelayedArray(seed)
 }

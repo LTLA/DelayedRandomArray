@@ -154,3 +154,16 @@ setMethod("extract_sparse_array", "RandomArraySeed", function(x, index) {
     out <- extract_array(x, index)
     as(out, "SparseArraySeed")
 })
+
+.ncp_extract_array <- function(x, index) {
+    reindex <- .obtain_unique_sorted_index(index)
+    arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)
+
+    params <- lapply(sampleDistrParam(x), function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
+    if (!is.null(x@ncp)) {
+        params$ncp <- .extract_parameter(x@ncp, reindex$index, dim(x))
+    }
+
+    arr <- .sample_distribution(arr, sampleDistrFun(x), params)
+    .remap_to_original_index(arr, index, reindex)
+}

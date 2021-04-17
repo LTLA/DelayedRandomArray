@@ -7,6 +7,7 @@
 \alias{RandomBetaMatrix-class}
 \alias{sampleDistrParam,RandomBetaArraySeed-method}
 \alias{sampleDistrFun,RandomBetaArraySeed-method}
+\alias{extract_array,RandomBetaArraySeed-method}
 \alias{matrixClass,RandomBetaArray-method}
 \alias{RandomBetaArraySeed}
 \alias{DelayedArray,RandomBetaArraySeed-method}

@@ -21,6 +21,7 @@
 #' sampleDistrParam,RandomChisqArraySeed-method
 #' sampleDistrFun,RandomChisqArraySeed-method
 #' matrixClass,RandomChisqArray-method
+#' extract_array,RandomChisqArray-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.
@@ -50,14 +51,20 @@ NULL
 #' @export
 #' @rdname RandomChisqArray-class
 RandomChisqArraySeed <- function(dim, df, ncp=0, chunkdim=NULL) {
+    if (missing(ncp)) {
+        ncp <- NULL
+    }
     new("RandomChisqArraySeed", dim=dim, df=df, ncp=ncp, chunkdim=chunkdim)
 }
 
 #' @export
-setMethod("sampleDistrParam", "RandomChisqArraySeed", function(x) c("df", "ncp"))
+setMethod("sampleDistrParam", "RandomChisqArraySeed", function(x) "df")
 
 #' @export
 setMethod("sampleDistrFun", "RandomChisqArraySeed", function(x) stats::qchisq)
+
+#' @export
+setMethod("extract_array", "RandomChisqArraySeed", .ncp_extract_array)
 
 #' @export
 setMethod("matrixClass", "RandomChisqArray", function(x) "RandomChisqMatrix")
@@ -69,5 +76,10 @@ setMethod("DelayedArray", "RandomChisqArraySeed", function(seed) new_DelayedArra
 #' @export
 #' @rdname RandomChisqArray-class
 RandomChisqArray <- function(dim, df, ncp=0, chunkdim=NULL) {
-    DelayedArray(RandomChisqArraySeed(dim, df=df, ncp=ncp, chunkdim=chunkdim))
+    if (missing(ncp)) {
+        # Preserve missingness.
+        DelayedArray(RandomChisqArraySeed(dim, df=df, chunkdim=chunkdim))
+    } else {
+        DelayedArray(RandomChisqArraySeed(dim, df=df, ncp=ncp, chunkdim=chunkdim))
+    }
 }
