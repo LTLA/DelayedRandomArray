@@ -8,7 +8,7 @@
 \alias{sampleDistrParam,RandomChisqArraySeed-method}
 \alias{sampleDistrFun,RandomChisqArraySeed-method}
 \alias{matrixClass,RandomChisqArray-method}
-\alias{extract_array,RandomChisqArray-method}
+\alias{extract_array,RandomChisqArraySeed-method}
 \alias{RandomChisqArraySeed}
 \alias{DelayedArray,RandomChisqArraySeed-method}
 \alias{RandomChisqArray}

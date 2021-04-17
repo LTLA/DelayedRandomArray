@@ -21,7 +21,7 @@
 #' sampleDistrParam,RandomChisqArraySeed-method
 #' sampleDistrFun,RandomChisqArraySeed-method
 #' matrixClass,RandomChisqArray-method
-#' extract_array,RandomChisqArray-method
+#' extract_array,RandomChisqArraySeed-method
 #'
 #' @seealso
 #' The \linkS4class{RandomArraySeed} class, for details on chunking and the distributional parameters.

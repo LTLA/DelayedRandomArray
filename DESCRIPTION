@@ -24,6 +24,9 @@ Suggests:
     BiocStyle,
     rmarkdown,
     Matrix
+biocViews: DataRepresentation
+BugReports: https://github.com/LTLA/DelayedRandomArray/issues
+URL: https://github.com/LTLA/DelayedRandomArray
 SystemRequirements: C++11
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
