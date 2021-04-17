@@ -141,7 +141,11 @@ setMethod("show", "RandomArraySeed", function(object) {
 setMethod("extract_array", "RandomArraySeed", function(x, index) {
     reindex <- .obtain_unique_sorted_index(index)
     arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)
-    params <- lapply(sampleDistrParam(x), function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
+
+    param.names <- sampleDistrParam(x)
+    params <- lapply(param.names, function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
+    names(params) <- param.names
+
     arr <- .sample_distribution(arr, sampleDistrFun(x), params)
     .remap_to_original_index(arr, index, reindex)
 })
@@ -159,7 +163,9 @@ setMethod("extract_sparse_array", "RandomArraySeed", function(x, index) {
     reindex <- .obtain_unique_sorted_index(index)
     arr <- sample_standard_uniform(dim(x), x@chunkdim, x@seeds, reindex$index)
 
-    params <- lapply(sampleDistrParam(x), function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
+    param.names <- sampleDistrParam(x)
+    params <- lapply(param.names, function(i) .extract_parameter(slot(x, i), reindex$index, dim(x)))
+    names(params) <- param.names
     if (!is.null(x@ncp)) {
         params$ncp <- .extract_parameter(x@ncp, reindex$index, dim(x))
     }

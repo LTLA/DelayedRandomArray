@@ -73,5 +73,5 @@ setMethod("DelayedArray", "RandomGammaArraySeed", function(seed) new_DelayedArra
 #' @export
 #' @rdname RandomGammaArray-class
 RandomGammaArray <- function(dim, shape, rate=1, scale=1/rate, chunkdim=NULL) {
-    DelayedArray(RandomGammaArraySeed(dim, shape=shape, rate=rate, scale=scale, chunkdim=chunkdim))
+    DelayedArray(RandomGammaArraySeed(dim, shape=shape, scale=scale, chunkdim=chunkdim))
 }
