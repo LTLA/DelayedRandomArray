@@ -1,0 +1,156 @@
+---
+title: DelayedArrays of random values
+author:
+- name: Aaron Lun
+  email: infinite.monkeys.with.keyboards@gmail.com
+date: "Revised: April 17, 2021"
+output:
+  BiocStyle::html_document:
+    toc_float: yes
+package: DelayedRandomArray
+vignette: >
+  %\VignetteIndexEntry{User's guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}  
+---
+
+```{r, echo=FALSE, results="hide"}
+knitr::opts_chunk$set(error=FALSE, message=FALSE, warning=FALSE)
+library(BiocStyle)
+```
+
+# Introduction
+
+The `r Biocpkg("DelayedRandomArray")` package implements `DelayedArray` subclasses containing dynamically sampled random values.
+Specifically, the actual values are never fully held in memory but are generated when the relevant part of the array is accessed.
+This allows users to create very large arrays of random values that would not otherwise be possible by filling an ordinary matrix.
+For example:
+
+```{r}
+library(DelayedRandomArray)
+X <- RandomUnifArray(c(1e6, 1e6))
+X
+```
+
+The resulting array can be used in any pipeline that is compatible with `DelayedArray` objects.
+This object occupies merely `r as.integer(object.size(X)/1e6)` MB in memory, 
+whereas an ordinary `matrix` would require `r prod(dim(X))*8/1e12` PB instead.
+
+# Available distributions
+
+Almost every distribution in _stats_ is available here.
+To list a few:
+
+```{r}
+RandomNormArray(c(100, 50))
+RandomPoisArray(c(100, 50), lambda=5)
+RandomGammaArray(c(100, 50), shape=2, rate=5)
+RandomWeibullArray(c(100, 50), shape=5)
+```
+
+Distributional parameters can either be scalars:
+
+```{r}
+RandomNormArray(c(100, 50), mean=1)
+```
+
+Or vectors, which are recycled along the length of the array:
+
+```{r}
+RandomNormArray(c(100, 50), mean=1:100)
+```
+
+Or other arrays of the same dimensions, which are used to sample the corresponding parts of the random array:
+
+```{r}
+means <- RandomNormArray(c(100, 50))
+RandomPoisArray(c(100, 50), lambda=2^means)
+```
+
+For example, a hypothetical simulation of a million-cell single-cell RNA-seq dataset might look like this:
+
+```{r}
+ngenes <- 20000
+log.abundances <- runif(ngenes, -2, 5)
+
+nclusters <- 20 # define 20 clusters and their population means.
+cluster.means <- matrix(2^rnorm(ngenes*nclusters, log.abundances, sd=2), ncol=nclusters)
+
+ncells <- 1e6
+clusters <- sample(nclusters, ncells, replace=TRUE) # randomly allocate cells
+cell.means <- DelayedArray(cluster.means)[,clusters]
+
+dispersions <- 0.05 + 10/cell.means # typical mean variance trend.
+
+y <- RandomNbinomArray(c(ngenes, ncells), mu=cell.means, size=1/dispersions)
+y
+```
+
+# Chunking 
+
+Each random `DelayedArray`s is broken into contiguous rectangular chunks of identical size and shape.
+Each chunk is assigned a seed at construction time that is used to initialize a random number stream (using the PCG32 generator from the `r CRANpkg("dqrng")` package).
+When the user accesses any part of the array, we generate the random numbers in the overlapping chunks and return the desired values.
+This provides efficient random access to any subarray without the need to use any jump-ahead functionality.
+
+<!--
+The complexity comes from the fact that we don't know _a priori_ how many draws are taken from the PRNG after each draw of boost::random::uniform01.
+The jump-ahead may also be very inefficient if we're fiddling with the end of the array and repeatedly have to do a large jump-ahead.
+-->
+
+The chunking scheme determines the efficiency of our random `DewlayedArray`s.
+Chunks that are too large require unnecessary number generation when a subarray is requested, while chunks that are too small would increase memory usage and book-keeping overhead.
+The "best" choice also depends on the downstream access pattern, if such information is known.
+For example, in a matrix where each column is a chunk, retrieval of a column would be very efficient while retrieval of a single row would be very slow.
+The default chunk dimensions are set to the square root of the array dimensions (or 100, whichever is larger), providing a reasonable compromise between all of these considerations.
+This can also be manually specified with the `chunkdim=` argument.
+
+```{r}
+# Column-wise chunks:
+RandomUnifArray(c(1000, 500), chunkdim=c(1, 500))
+
+# Row-wise chunks:
+RandomUnifArray(c(1000, 500), chunkdim=c(1000, 1))
+```
+
+Unlike other chunk-based `DelayedArray`s, the actual values of the random `DelayedArray` are dependent on the chunk parameters.
+This is because the sampling is done within each chunk and any alteration to the chunk shape or size will rearrange the stream of random numbers within the array.
+Thus, even when the seed is set, a different `chunkdim` will yield different results:
+
+```{r}
+set.seed(199)
+RandomUnifArray(c(10, 5), chunkdim=c(1, 5))
+
+set.seed(199)
+RandomUnifArray(c(10, 5), chunkdim=c(10, 1))
+```
+
+# Further comments
+
+Like any other random process, the seed should be set to achieve reproducible results.
+We stress that the R-level seed only needs to be set before _construction_ of the random `DelayedArray`; it is not necessary to set the seed during its _use_.
+This is because the class itself will define further seeds (one per chunk) and store these in the object for use in per-chunk sampling.
+
+```{r}
+set.seed(999)
+RandomNormArray(c(10, 5))
+
+set.seed(999)
+RandomNormArray(c(10, 5))
+```
+
+For certain distributions, it is possible to indicate that the array is sparse.
+This does not change the result or efficiency of the sampling process, but can still be useful as it allows downstream functions to use more efficient sparse algorithms.
+Of course, this is only relevant if the distributional parameters are such that sparsity is actually observed.
+
+```{r}
+RandomPoisArray(c(1e6, 1e6), lambda=0.5) # dense by default
+
+RandomPoisArray(c(1e6, 1e6), lambda=0.5, sparse=TRUE) # treat as sparse
+```
+
+# Session information {-}
+
+```{r}
+sessionInfo()
+```
