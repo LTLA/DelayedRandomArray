@@ -24,7 +24,9 @@ library(BiocStyle)
 The `r Biocpkg("DelayedRandomArray")` package implements `DelayedArray` subclasses containing dynamically sampled random values.
 Specifically, the actual values are never fully held in memory but are generated when the relevant part of the array is accessed.
 This allows users to create very large arrays of random values that would not otherwise be possible by filling an ordinary matrix.
-For example:
+
+To install the package, follow the instructions on `r Biocpkg("DelayedRandomArray")` landing page.
+Using the package is then as simple as:
 
 ```{r}
 library(DelayedRandomArray)
@@ -33,7 +35,7 @@ X
 ```
 
 The resulting array can be used in any pipeline that is compatible with `DelayedArray` objects.
-This object occupies merely `r as.integer(object.size(X)/1e6)` MB in memory, 
+This object occupies only `r as.integer(object.size(X)/1e6)` MB in memory, 
 whereas an ordinary `matrix` would require `r prod(dim(X))*8/1e12` PB instead.
 
 # Available distributions
@@ -98,7 +100,7 @@ The complexity comes from the fact that we don't know _a priori_ how many draws 
 The jump-ahead may also be very inefficient if we're fiddling with the end of the array and repeatedly have to do a large jump-ahead.
 -->
 
-The chunking scheme determines the efficiency of our random `DewlayedArray`s.
+The chunking scheme determines the efficiency of accessing our random `DelayedArray`s.
 Chunks that are too large require unnecessary number generation when a subarray is requested, while chunks that are too small would increase memory usage and book-keeping overhead.
 The "best" choice also depends on the downstream access pattern, if such information is known.
 For example, in a matrix where each column is a chunk, retrieval of a column would be very efficient while retrieval of a single row would be very slow.
@@ -106,10 +108,10 @@ The default chunk dimensions are set to the square root of the array dimensions 
 This can also be manually specified with the `chunkdim=` argument.
 
 ```{r}
-# Column-wise chunks:
+# Row-wise chunks:
 RandomUnifArray(c(1000, 500), chunkdim=c(1, 500))
 
-# Row-wise chunks:
+# Column-wise chunks:
 RandomUnifArray(c(1000, 500), chunkdim=c(1000, 1))
 ```
 
