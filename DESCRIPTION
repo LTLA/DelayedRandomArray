@@ -1,11 +1,11 @@
 Package: DelayedRandomArray
-Version: 0.99.1
-Date: 2021-04-23
+Version: 0.99.2
+Date: 2021-04-29
 Title: Delayed Arrays of Random Values
-Description: Implements a DelayedArray of random values,
-    where the realization of the sampled values is delayed until they are needed.
-    Reproducible sampling within any subarray is achieved by chunking;
-    each chunk is initialized with a different random seed and stream.
+Description: 
+    Implements a DelayedArray of random values where the realization of the sampled values is delayed until they are needed.
+    Reproducible sampling within any subarray is achieved by chunking where each chunk is initialized with a different random seed and stream.
+    The usual distributions in the stats package are supported, along with scalar, vector and arrays for the parameters.
 Authors@R: person("Aaron", "Lun", role=c("aut", "cre"), email="infinite.monkeys.with.keyboards@gmail.com")
 License: GPL-3
 Depends:

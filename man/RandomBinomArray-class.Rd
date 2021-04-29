@@ -45,7 +45,7 @@ Y
 
 # Fiddling with the distribution parameters:
 X2 <- RandomBinomArraySeed(c(1e5, 1e5), size=10, 
-     prob=runif(1e5, 0, 0.1), sparse=TRUE)
+    prob=runif(1e5, 0, 0.1), sparse=TRUE)
 Y2 <- DelayedArray(X2)
 Y2
 

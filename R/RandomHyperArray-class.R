@@ -32,7 +32,7 @@
 #'
 #' # Fiddling with the distribution parameters:
 #' X2 <- RandomHyperArraySeed(c(1e5, 1e5), m=round(runif(1e5, 10, 20)), 
-#'      n=20, k=15, sparse=TRUE)
+#'     n=20, k=15, sparse=TRUE)
 #' Y2 <- DelayedArray(X2)
 #' Y2
 #'
