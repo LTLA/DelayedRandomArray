@@ -73,7 +73,7 @@
 #' show,RandomArraySeed-method
 #' extract_array,RandomArraySeed-method
 #' is_sparse,RandomArraySeed-method
-#' extract_sparse_array,RandomArraySeed-method
+#' OLD_extract_sparse_array,RandomArraySeed-method
 #' sampleDistrFun
 #' sampleDistrParam
 #'
@@ -154,7 +154,7 @@ setMethod("extract_array", "RandomArraySeed", function(x, index) {
 setMethod("is_sparse", "RandomArraySeed", function(x) x@sparse)
 
 #' @export
-setMethod("extract_sparse_array", "RandomArraySeed", function(x, index) {
+setMethod("OLD_extract_sparse_array", "RandomArraySeed", function(x, index) {
     out <- extract_array(x, index)
     as(out, "SparseArraySeed")
 })

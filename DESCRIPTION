@@ -1,6 +1,6 @@
 Package: DelayedRandomArray
-Version: 1.9.0
-Date: 2021-04-29
+Version: 1.9.1
+Date: 2023-05-03
 Title: Delayed Arrays of Random Values
 Description: 
     Implements a DelayedArray of random values where the realization of the sampled values is delayed until they are needed.
@@ -9,7 +9,7 @@ Description:
 Authors@R: person("Aaron", "Lun", role=c("aut", "cre"), email="infinite.monkeys.with.keyboards@gmail.com")
 License: GPL-3
 Depends:
-    DelayedArray
+    DelayedArray (>= 0.27.2)
 Imports:
     methods,
     dqrng,

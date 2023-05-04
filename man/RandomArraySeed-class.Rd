@@ -9,7 +9,7 @@
 \alias{show,RandomArraySeed-method}
 \alias{extract_array,RandomArraySeed-method}
 \alias{is_sparse,RandomArraySeed-method}
-\alias{extract_sparse_array,RandomArraySeed-method}
+\alias{OLD_extract_sparse_array,RandomArraySeed-method}
 \alias{sampleDistrFun}
 \alias{sampleDistrParam}
 \title{A DelayedArray seed supplying chunked random values}
