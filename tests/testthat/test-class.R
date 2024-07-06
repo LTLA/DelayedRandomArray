@@ -85,17 +85,9 @@ test_that("parameter handling works as expected", {
     expect_identical(as.vector(arr2), qunif(as.vector(arr), 1:30/6, 5))
 
     set.seed(100)
-    MIN <- matrix(1:2000/400, 100, 50)
-    arr2 <- RandomUnifArray(c(100, 50), min=MIN, max=5)
-    expect_identical(as.vector(arr2), qunif(as.vector(arr), as.vector(MIN), 5))
-
-    set.seed(100)
-    MIN <- matrix(1:2000/400, 100, 50)
+    MIN <- matrix(1:5000/1000, 100, 50)
     arr2 <- RandomUnifArray(c(100, 50), min=MIN, max=5)
     expect_identical(as.vector(arr2), qunif(as.vector(arr), as.vector(MIN), 5))
 
     expect_error(RandomUnifArray(c(100, 50), min=MIN[,1:10], max=5), "must be the same")
 })
-
-
-
