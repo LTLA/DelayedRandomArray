@@ -9,7 +9,7 @@
 \alias{show,RandomArraySeed-method}
 \alias{extract_array,RandomArraySeed-method}
 \alias{is_sparse,RandomArraySeed-method}
-\alias{OLD_extract_sparse_array,RandomArraySeed-method}
+\alias{extract_sparse_array,RandomArraySeed-method}
 \alias{sampleDistrFun}
 \alias{sampleDistrParam}
 \title{A DelayedArray seed supplying chunked random values}
@@ -77,7 +77,7 @@ This is optional as most distributions will not yield sparse arrays for most of 
 
 When \code{sparse=TRUE}, the block processing machinery in \pkg{DelayedArray} will return a sparse array. 
 This gives downstream applications the opportunity to use more efficient sparse algorithms when relevant.
-However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SVT_SparseArray}.
 
 We can determine whether a RandomArraySeed \code{x} has a sparse interpretation with \code{is_sparse(x)}.
 }

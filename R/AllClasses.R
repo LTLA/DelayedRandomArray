@@ -1,4 +1,5 @@
 #' @export
+#' @import SparseArray
 #' @import DelayedArray
 setClass("RandomArraySeed", contains="VIRTUAL", slots=c(dim="integer", chunkdim="integer", seeds="list", sparse="logical"))
 

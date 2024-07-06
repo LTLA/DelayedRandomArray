@@ -56,7 +56,7 @@
 #'
 #' When \code{sparse=TRUE}, the block processing machinery in \pkg{DelayedArray} will return a sparse array. 
 #' This gives downstream applications the opportunity to use more efficient sparse algorithms when relevant.
-#' However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SparseArraySeed}.
+#' However, this option does not affect the sampling itself; the result is always the same as a dense array, just that the output is coerced into a \linkS4class{SVT_SparseArray}.
 #'
 #' We can determine whether a RandomArraySeed \code{x} has a sparse interpretation with \code{is_sparse(x)}.
 #' 
@@ -73,7 +73,7 @@
 #' show,RandomArraySeed-method
 #' extract_array,RandomArraySeed-method
 #' is_sparse,RandomArraySeed-method
-#' OLD_extract_sparse_array,RandomArraySeed-method
+#' extract_sparse_array,RandomArraySeed-method
 #' sampleDistrFun
 #' sampleDistrParam
 #'
@@ -154,9 +154,9 @@ setMethod("extract_array", "RandomArraySeed", function(x, index) {
 setMethod("is_sparse", "RandomArraySeed", function(x) x@sparse)
 
 #' @export
-setMethod("OLD_extract_sparse_array", "RandomArraySeed", function(x, index) {
+setMethod("extract_sparse_array", "RandomArraySeed", function(x, index) {
     out <- extract_array(x, index)
-    as(out, "SparseArraySeed")
+    as(out, "SVT_SparseArray")
 })
 
 .ncp_extract_array <- function(x, index) {
