@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // recycle_vector
 Rcpp::NumericVector recycle_vector(Rcpp::NumericVector vec, Rcpp::IntegerVector dim, Rcpp::List index);
 RcppExport SEXP _DelayedRandomArray_recycle_vector(SEXP vecSEXP, SEXP dimSEXP, SEXP indexSEXP) {

@@ -30,4 +30,5 @@ BugReports: https://github.com/LTLA/DelayedRandomArray/issues
 URL: https://github.com/LTLA/DelayedRandomArray
 SystemRequirements: C++11
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
+Encoding: UTF-8
